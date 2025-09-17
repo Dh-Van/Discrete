@@ -1,0 +1,37 @@
+\documentclass[11pt]{article}
+
+\usepackage{discrete}
+
+\begin{document}
+
+\textbf{Find the error and redo:}\\
+How many subsets of a 100-element set have more than one element?
+
+\textbf{Solution:} There are $\binom{100}{2}$ subsets of a 100-element set with two elements, since this counts unordered pairs of distinct elements. Similarly, there are $\binom{100}{3}$ subsets with three elements. Continuing in this way and using the sum rule (these cases are mutually exclusive), there are
+\[
+    \sum_{k=2}^{99}\binom{100}{k}
+\]
+subsets of a 100-element set that have more than one element.
+
+\textbf{Fixing the error:}\\
+A subset $B$ of a set $A$ is valid only if all elements of $B$ are also elements of $A$. Using this definition, note that a subset of a 100-element set can be the set itself. The above solution omitted the 100-element subset. To fix this, change the summation to
+\[
+    \sum_{k=2}^{100}\binom{100}{k},
+\]
+which now includes the full 100-element subset.
+\textbf{Totally different approach:}\\
+Think of the 100-element set $S$ as a bit string of length 100. Any subset of $S$ corresponds to a bit string where a $1$ means the element is included and a $0$ means it is not. Each position has two possibilities, so by the product rule there are $2^{100}$ subsets in total.
+
+Now remove the subsets with exactly one element (there are 100 of them) and the empty subset (one of them). This leaves
+\[
+    2^{100}-100-1=2^{100}-101
+\]
+subsets of a 100-element set that have more than one element.
+
+\begin{itemize}
+    \item \textbf{Who Contributed:} Dhvan Shah was the main contributor, doing the formal write-up of the solution. Pranav Bonthu and Michael Ku compared their solutions to Dhvan’s and provided feedback and edits.
+    \item \textbf{Resources}: No resources were used.
+    \item \textbf{Main points:} Based on group discussions, we felt that this problem
+\end{itemize}
+
+\end{document}
