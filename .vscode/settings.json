@@ -1,0 +1,17 @@
+{
+    "files.exclude": {
+        "**/.DS_Store": true,
+        "**/.git": true,
+        "**/.hg": true,
+        "**/.svn": true,
+        "**/*.aux": true,
+        "**/*.fdb_latexmk": true,
+        "**/*.fls": true,
+        "**/*.out": true,
+        "**/*.synctex.*": true,
+        "**/Thumbs.db": true
+    },
+    "hide-files.files": [
+        "*.out"
+    ]
+}
