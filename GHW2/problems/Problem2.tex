@@ -1,0 +1,25 @@
+\documentclass[11pt]{article}
+\usepackage{../../discrete}
+
+\begin{document}
+
+\section*{Problem 2}
+
+\textbf{Question: }\\
+Give a Jeopardy-style combinatorial proof of: $\sum_{k=1}^{n}k\binom{n}{k} = n2^{n-1}$
+\\\textbf{Proof: }\\
+How many ways can you form a non-empty team from {n} people, where one person in the team must be a captain.
+\\\textbf{LHS: }\\
+If we want to form a team {k} from {n} people, we would use $\binom{n}{k}$. This works, because $\binom{n}{k}=\frac{n!}{k!(n-k)!}$ There are $n!$ ways to line up {n} people. If we just want a team of {k} people, we can chop the line of {n} people at the {k}-th person. But because we are forming a team, we don't want the people in a line. This means there is overcounting. There are $k!$ ways a distinct team of k people could be ordered, and $(n-k)!$ ways the people left out could be ordered. Because this is for every disntict team, we must divide by $k!(k=n)!$ to 'unorder' the line.
+\\\\Now from this team of {k} people, we must pick a captain. There are {k} ways to do this, since only 1 person can be captain out of {k} people.
+\\Now if we want to count all the teams we can form from {n} people, we need to account for changing team size {k} and use Sum Rule to add up all the different possibilities:
+\\$k = 1$ $\rightarrow$ Team of 1 person $\rightarrow 1 \cdot \binom{n}{1} +$
+\\$k = 2$ $\rightarrow$ Team of 2 people $\rightarrow 2 \cdot \binom{n}{2} +$
+\\ ...
+\\$k = n$ $\rightarrow$ Team of {n} people $\rightarrow n \cdot \binom{n}{n}$
+\\We can rewrite this as a sum: $\sum_{k=1}^{n}k\binom{n}{k} $
+\\\textbf{RHS: }\\
+We can also think about this problem, by choosing the captain for the team first, and then the team. Since we know that the team must have at least 1 person, and only 1 captain, there are $n$ ways to pick a captain for any team. Now we need to count the total number of teams we can make from $n$ people, after having chosen a captain. Each person (aside from the captain) only has 2 options, either they are on the team or they are off the team. The captain never has a choice, they must always be on the team. We can represent this like: $1 \cdot 2 \cdot 2 \cdot ... 2$, where there is one 1, and $n-1$ two's. We can simplify this to $2^{n-1}$ ways to form a team from n-1 people. 
+\\Now we can use the product rule to combine the equations: $n2^{n-1}$
+
+\end{document}

@@ -1,5 +1,10 @@
 {
     "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
         "**/*.aux": true,
         "**/*.fdb_latexmk": true,
         "**/*.fls": true,
@@ -7,5 +12,7 @@
         "**/*.synctex.*": true,
         "**/*.synctex*": true,
         "**/*.log": true
-    }
+    },
+    "hide-files.files": [],
+    "latex-workshop.latex.autoBuild.interval": 1000
 }
