@@ -5,21 +5,40 @@
 
 \section*{Problem 2}
 
-\textbf{Question: }\\
-Give a Jeopardy-style combinatorial proof of: $\sum_{k=1}^{n}k\binom{n}{k} = n2^{n-1}$
-\\\textbf{Proof: }\\
-How many ways can you form a non-empty team from {n} people, where one person in the team must be a captain.
-\\\textbf{LHS: }\\
-If we want to form a team {k} from {n} people, we would use $\binom{n}{k}$. This works, because $\binom{n}{k}=\frac{n!}{k!(n-k)!}$ There are $n!$ ways to line up {n} people. If we just want a team of {k} people, we can chop the line of {n} people at the {k}-th person. But because we are forming a team, we don't want the people in a line. This means there is overcounting. There are $k!$ ways a distinct team of k people could be ordered, and $(n-k)!$ ways the people left out could be ordered. Because this is for every disntict team, we must divide by $k!(k=n)!$ to 'unorder' the line.
-\\\\Now from this team of {k} people, we must pick a captain. There are {k} ways to do this, since only 1 person can be captain out of {k} people.
-\\Now if we want to count all the teams we can form from {n} people, we need to account for changing team size {k} and use Sum Rule to add up all the different possibilities:
-\\$k = 1$ $\rightarrow$ Team of 1 person $\rightarrow 1 \cdot \binom{n}{1} +$
-\\$k = 2$ $\rightarrow$ Team of 2 people $\rightarrow 2 \cdot \binom{n}{2} +$
-\\ ...
-\\$k = n$ $\rightarrow$ Team of {n} people $\rightarrow n \cdot \binom{n}{n}$
-\\We can rewrite this as a sum: $\sum_{k=1}^{n}k\binom{n}{k} $
-\\\textbf{RHS: }\\
-We can also think about this problem, by choosing the captain for the team first, and then the team. Since we know that the team must have at least 1 person, and only 1 captain, there are $n$ ways to pick a captain for any team. Now we need to count the total number of teams we can make from $n$ people, after having chosen a captain. Each person (aside from the captain) only has 2 options, either they are on the team or they are off the team. The captain never has a choice, they must always be on the team. We can represent this like: $1 \cdot 2 \cdot 2 \cdot ... 2$, where there is one 1, and $n-1$ two's. We can simplify this to $2^{n-1}$ ways to form a team from n-1 people. 
-\\Now we can use the product rule to combine the equations: $n2^{n-1}$
+\textbf{Question: }
 
+Give a Jeopardy-style combinatorial proof of: $\sum_{k=1}^{n}k\binom{n}{k} = n2^{n-1}$
+
+\textbf{Jeopardy: }
+
+How many ways can you form a non-empty team from {n} people, where one person in the team must be a captain.
+
+\textbf{LHS: }
+
+$\binom{n}{k} \equiv \frac{n!}{k!(n-k)!}$ tells us the number of ways to form teams of $k$ from $n$ people. There are $n!$ ways to line up $n$ people. To count all teams of $k$, we can pick the first $k$ people from each distinct line. This leads to major overcounting, since the same group of $k$ people could be a different order, and thus we would overcount the same team. For each distinct line, there are $k!$ ways the team could be ordered, and $(n-k)!$ ways the people left out could be ordered. Since this is for each distinct line, we have to divide $n!$ by $k!(n-k)!$ to 'unorder' the line, which gives us the number of ways to form teams of $k$ from $n$ people.
+
+Now we must pick a captain from the team of $k$. This is exactly $k$, since only one person can be captain out of the entire team.
+
+To count all possible teams we can form from $n$ people, we can change $k$, and use Sum Rule to add up all the different possiblities. We set $k=1$, since the team MUST be non-empty:
+
+$k = 1$ $\rightarrow$ Team of 1 person $\rightarrow 1 \cdot \binom{n}{1} +$
+
+$k = 2$ $\rightarrow$ Team of 2 people $\rightarrow 2 \cdot \binom{n}{2} +$
+
+$\dots$
+
+$k = n$ $\rightarrow$ Team of {n} people $\rightarrow n \cdot \binom{n}{n}$
+
+
+We can rewrite this as a sum: $\sum_{k=1}^{n}k\binom{n}{k} $
+
+\textbf{RHS: }\\
+Another way to approach this problem, is to first pick the captain first and then decide the team. We can do this because we know that the team MUST be non-empty, and there MUST be a captain. Because of this, there are always $n$ ways to pick a captain from $n$ people, no matter the team size.
+
+Each person (aside from the captain) has 2 options: ON the team, OFF the team. Since each person has an independent choice, we can use the Product Rule to represent this: $2 \cdot 2 \cdot 2 \cdot $ $ \dots $ $ \cdot 2$ The captain only has 1 option: On the team, so the above multiplication is only repeated $n-1$ times.
+
+Picking a captain and forming teams (excluding the captain) are also independent choices, so we can once again use the Product Rule to simplify the expression to: $n2^{n-1}$
+
+\textbf{Proof: }
+Since the LHS and RHS both count the exact same thing, they MUST be equal
 \end{document}
