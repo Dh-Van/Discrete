@@ -1,0 +1,88 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+
+\title{Discrete hw 2 problem 2}
+\author{Pranav B}
+\date{September 2025}
+
+\begin{document}
+
+\maketitle
+
+\section{The Dreaded Horse Problem}
+
+In order to determine how many outcomes of this race are possible, we can look at how many outcomes there are for each situations. 
+
+We can define the situations as:
+
+
+\begin{enumerate}
+    \item No ties.
+    \item A tie between 2 horses.
+    \item Two separate ties (each between 2 horses).
+    \item A tie between 3 of the horses.
+    \item A tie between all 4 horses.
+\end{enumerate}
+
+The possible outcomes for the first situation, no ties, can be expressed as 4!. This is because we have four horses, and if they each finish at separate times, we have 4 options for which horse finishes first, 3 options for second, 2 for third, and 1 for fourth, or 4 factorial.
+
+\begin{center}
+No ties = $4!$
+\end{center}
+
+In situation two, we have a singular tie between 2 horses. To start, we found how many combinations of pairs of horses there are. Since we are picking 2 horses from a set of 4, we can do \[
+{4} \choose{2}
+\] to find the total number of possible pairings. We also need to determine how the race outcome ends, as in, which horses finish at what times. Since we have two horses finishing simultaneously and finishing in the same place (first, second, or third), we can treat this tie as an individual "entity". This means we have three of these "entities", the two separate horses and one tie. 
+
+The total number of possible outcomes for these entities to be placed can be defined as 3 factorial: three options for first, two for second, and one for third. 
+
+So, in order to find the total amount of possible outcomes for this situation,  we need to do: 
+\[
+\left(4\choose2\right) \cdot 3!
+\]
+
+
+We are multiplying the number of possible pairings and the outcomes of how the race can finish as the two are not mutually exclusive. 
+
+Moving to situation three, we have two distinct ties, each between two horses. Just like in situation two, we will do \[
+{4} \choose{2}
+\]
+
+4 choose 2 will not only make all possible combination of pairs, but also gives us the outcome of the race. This is because when a pair to tie is picked, you can say that pairing will go first, and the other second. Since we only have 2 pairings, or two entities, there will only be first and second. Since 4 choose 2 determines both the pairs as well as who goes first and second, the possible outcomes for this situation is \[
+{4} \choose{2}
+\].
+
+Situation four has one tie between 3 horses. To determine the total combination of horses that are within the tie, we can do \[
+{4} \choose{3}
+\] (4 choose 1 could also work as you could pick which horse is NOT within the tie), 
+
+In this situation, we are left with two entities, the group of 3 tying horse and the horse that finishes on its own. The amount of ways these two groups can be ordered is 2!, as we have two options for which entity finishes first, and one for finishing second. 
+
+Since the grouping are outcomes for the tie and the order in which the entities finish are not mutually exclusive, we can say that the the total possible outcome for this situation is \[
+\left(4\choose3\right) \cdot 2!
+\]
+
+Situation five is where all four horses tie together. In this situation, we only have one possible way of 4 horses tying (as well as only one possible way to order this entity), so there is only 1 possible outcome.
+
+No to determine the total possible outcomes for the race, we will add up all the possible outcomes from each situation. We are adding since each situation is mutually exclusive. We also have no overlapping outcomes, so we do not need to subtract any possible outcomes.
+
+This leaves us with: 
+
+\[
+\text{Situation}_{1} + \text{Situation}_{2} + \text{Situation}_{3} + \text{Situation}_{4} + \text{Situation}_{5}
+\]
+
+which is equal too (with all 'choose' being simplified)
+
+\[4! + 6 \cdot 3! + 6 + 4 \cdot 2! + 1\]
+
+which gives us a final total of:
+
+\[75\]
+
+
+
+
+
+
+\end{document}

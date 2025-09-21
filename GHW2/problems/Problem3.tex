@@ -1,0 +1,59 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+
+\title{IC 4: #10}
+\author{Pranav B}
+\date{September 2025}
+
+\begin{document}
+
+\maketitle
+
+\section{IC 4: Problem 10}
+
+\[
+(B - A) \cup (C - A) \;=\; (B \cup C) - A
+\]
+
+We can prove that the above equation is true. To start, we can say that on the right side, we are combining sets B and C. We are then removing everything from \[(B \cup C)\], that is within the set of A. This means that we are left with a set of everything in set B that is not in set A plus everything in the set C that is not also in A. 
+
+In other words, we are saying that we will end up with a set that contains element from 
+(B - A) and (C - A)
+. In set notation, this would be \[
+(B - A) \cup (C - A)
+\]. This means that \[
+(B - A) \cup (C - A) \;=\; (B \cup C) - A
+\]
+
+\section*{Example}
+
+Let 
+\[
+B = \{1,2,3,4\}, \quad C = \{5,6,7,8\}, \quad A = \{1,2,5,6\}.
+\]
+
+\textbf{Left-hand side:}
+\[
+B - A = \{3,4\}, \quad C - A = \{7,8\}.
+\]
+Thus,
+\[
+(B - A) \cup (C - A) = \{3,4,7,8\}.
+\]
+
+\textbf{Right-hand side:}
+\[
+B \cup C = \{1,2,3,4,5,6,7,8\},
+\]
+so
+\[
+(B \cup C) - A = \{3,4,7,8\}.
+\]
+
+Since both sides equal $\{3,4,7,8\}$, the identity holds in this example.
+
+\end{document}
+
+
+
+\end{document}
