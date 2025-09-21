@@ -5,9 +5,12 @@
 
 \section*{Problem 1}
 
-\textbf{Question: }\\
+\textbf{Question: }
+
 Suppose that $f$ is a function from a finite set $A$ to a finite set $B$ where $|A|=a$ and $|B|=b$, and $a>b$. Use the Pigeon-hole Principle and the definition of 1-1 to prove that $f$ cannot be 1-1
-\\\textbf{Proof: }\\
-A function $f$ from $S_1 \rightarrow S_2$ is 1-1, if for any 2 elements $a, b \in S_1$: if $f(a)=f(b)$ then $a = b$. In the above case, we have 2 finite sets: $A, B$, where $|A| > |B|$.
+
+\textbf{Proof: }
+
+A function $f$ from $S_1 \rightarrow S_2$ is 1-1, if for any 2 elements $a, b \in S_1$: if $f(a)=f(b)$ then $a = b$. In the above case, we have 2 finite sets: $A, B$, where $|A| > |B|$. We can think of each element $a$ in $A$ as the pigeons, and each element $b$ in $B$ as the pigeon-holes. The act of placing the pigeon in a hole, is what the function $f$ is doing. This means that for $f$ to be 1-1, each hole can only have 1 pigeon. But we know that the number pigeons is greater than the number of holes: $a > b$. This means that there must be at least 2 pigeons in the same hole. Mathematically, this means that there exists $a_1, a_2 \in A$ where $a_1 \neq a_2$, BUT $f(a_1) = f(a_2)$. This proves that the function $f$ that maps $A$ to $B$ CANNOT be 1-1.
 
 \end{document}
