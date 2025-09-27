@@ -1,6 +1,6 @@
 import os
 
-GHW = 2
+GHW = 3
 PROBLEMS = 6
 
 os.makedirs(f'GHW{GHW}/problems')
@@ -22,5 +22,8 @@ with open(f'GHW{GHW}/main.tex', 'w') as f:
     
     for i in range(1, PROBLEMS + 1):
         f.write(r'\subfile{problems/Problem' + str(i) + '.tex}\n')
+        
+        with open(f'GHW{GHW}/problems/Problem{i}.tex', 'w') as _: 
+            pass
         
     f.write('\n' + r'\end{document}')
