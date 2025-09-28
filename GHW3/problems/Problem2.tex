@@ -1,0 +1,32 @@
+\documentclass[11pt]{article}
+\usepackage{../../discrete}
+
+\begin{document}
+
+\section*{Problem 2}
+
+\textbf{Question: }
+
+Provide a Jeopardy-style combinatorial proof of the following equation by asking one question and then answering that one question in two different ways:
+
+$\binom{36}{9} \binom{27}{9} \binom{18}{9} \binom{9}{9} = \frac{36!}{9!9!9!9!}$
+
+\textbf{Jeopardy Answer:}
+How many ways can you make 4 distinct teams of 9 from 36 people?
+
+\textbf{LHS:}
+
+Since the order within each team doesn't matter, we can make teams by "choosing" k people from n people: $\binom{n}{k}$. To make the first team, we choose 9 people from 36: $\binom{36}{9}$. Now to form the second team, we only have $36-9$ people to choose from: $\binom{36-9}{9} = \binom{27}{9}$. For the third team, we only have $27 - 9$ people to chose from: $\binom{27-9}{9}=\binom{18}{9}$. And finally for the fourth team, we only have the remaining 9 people to chose from: $\binom{9}{9}$. Because we have framed these choices as independent tasks, we can use the product rule to determine the number of ways to form the teams: $\binom{36}{9} \binom{27}{9} \binom{18}{9} \binom{9}{9}$
+
+\textbf{RHS:}
+
+We can also think about this problem as forming an ordered line of all $n$ people, picking the first $k$ people, and then unordering that selection, and unordering the rest of the line. We can show this mathametically as: $\frac{n!}{k!(n-k)!}$. So to form the first team of 9, we line up all 36 people, pick the first 9, and unorder the selection as well as the 27 people not selected: $\frac{36!}{9!27!}$. Then to form the second team of 9, we line up everyone not selected last time, pick the first 9, and unorder the selection and the 18 people not selected: $\frac{27!}{9!18!}$. The third team is picked the same way. Line up the 18 people not selected last time, pick the first 9 and unorder the selection and the 9 poeple not selected: $\frac{18!}{9!9!}$. Finally the for the last team, we order all 9 people and unorder all 9 of the on the team: $\frac{9!}{9!0!}$.
+
+Because we framed all of the choices as independent tasks, we can use the product rule to detemrine the number of ways to form the teams: $\frac{36!}{9!27!} \frac{27!}{9!18!} \frac{18!}{9!9!} \frac{9!}{9!0!}$. If we simplify that expression, we get: $\frac{36!}{9!9!9!9!}$
+
+\textbf{Proof:}
+
+Since both the LHS and the RHS count exactly the same number, they must be equal. Therefore:
+$\binom{36}{9} \binom{27}{9} \binom{18}{9} \binom{9}{9} = \frac{36!}{9!9!9!9!}$
+
+\end{document}
