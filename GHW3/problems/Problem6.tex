@@ -1,10 +1,10 @@
 \documentclass{article}
-\usepackage{discrete}
+\usepackage{../../discrete}
 \begin{document}
 \section*{Problem 6}
 \textbf{Question:}\\ Suppose you have 32 identical candies. How many ways can you distribute some, but not necessarily all, of these 32 candies to 13  children if each child must get at least one candy? Fully justify and explain your reasoning/work. (Your solution should somehow allow for every case, ranging from distributing a max of all 32 candies to a min of only distributing 13 candies.)\\\\
 \textbf{Solution:}\\In this problem, we are asked to distribute 32 candies among 13 children under certain conditions. Specifically, each child must receive at least one candy. Because of this restriction, we can use the sticks and stones method. For 13 children, we need 12 dividers (sticks) to create 13 “buckets,” one for each child. \\\\
-Since each child is guaranteed at least one candy, we can preload one candy into each bucket. 
+Since each child is guaranteed at least one candy, we can preload one candy into each bucket.
 \[*|*|*|*|*|*|*|*|*|*|*|*|*\]
 This immediately uses up 13 candies, leaving us with $32-13=19$ candies to distribute freely among the 13 children. The number of ways to distribute these remaining candies is:
 \[\binom{19+13-1}{13-1} = \binom{31}{12}\]
@@ -14,9 +14,9 @@ Thus, the final answer is:
 \[\binom{32}{13}\]
 \begin{itemize}
 
-\item \textbf{Who Contributed:} Michael Ku was the main contributor, doing the formal write-up of the solution. Pranav Bonthu and Dhvan Shah compared their solutions to Michael's and provided feedback and edits.
-\item \textbf{Resources}: No resources were used.
-\item \textbf{Main points:}  For our group, the central ideas of this problem were understanding the sticks-and-stones method and examining how different conditions, such as every child receiving at least one candy or not all the candy being used, affect the answer.
+    \item \textbf{Who Contributed:} Michael Ku was the main contributor, doing the formal write-up of the solution. Pranav Bonthu and Dhvan Shah compared their solutions to Michael's and provided feedback and edits.
+    \item \textbf{Resources}: No resources were used.
+    \item \textbf{Main points:}  For our group, the central ideas of this problem were understanding the sticks-and-stones method and examining how different conditions, such as every child receiving at least one candy or not all the candy being used, affect the answer.
 \end{itemize}
 \end{document}
 

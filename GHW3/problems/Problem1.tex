@@ -19,7 +19,9 @@ That subtraction, oversubtracts elements that are in at least 3 sets. We can def
 
 We use a similar process for elements that are in at least 4 sets. Define subset $A_3$ for elements in sets $S_1, ..., S_4$. We know $|A_3|=10$, since every four sets have 10 common elements. We need to pick four sets out of five: $\binom{5}{4}$ and multiply by the cardinality: $10 \cdot \binom{5}{4}$. Since we overcounted elements in 4 sets, we need to subtract this value from the above expression: $50,000 - 1,000 \cdot \binom{5}{2} + 100 \cdot \binom{5}{3} - 10 \binom{5}{4}$
 
-We again use a similar process for elements that are in at least 5 sets. Define subset $A_4$ for elements in sets $S_1, ..., S_5$. We know $|A_4|=1$, since all five sets have 1 common element. Since we oversubtracted elements in 5 sets, we need to add this value to the above expression: $50,000 - 1,000 \cdot \binom{5}{2} + 100 \cdot \binom{5}{3} - 10 \binom{5}{4} + 1$
+We again use a similar process for elements that are in at least 5 sets. Define subset $A_4$ for elements in sets $S_1, ..., S_5$. We know $|A_4|=1$, since all five sets have 1 common element. Since we oversubtracted elements in 5 sets, we need to add this value to the above expression:
+
+$50,000 - 1,000 \cdot \binom{5}{2} + 100 \cdot \binom{5}{3} - 10 \binom{5}{4} + 1$
 
 We can express the above expression in summation notation to be more concise:
 
