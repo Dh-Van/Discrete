@@ -1,0 +1,25 @@
+\documentclass{article}
+\usepackage{discrete}
+\begin{document}
+\section*{Problem 5}
+\textbf{Question:}\\ Give a Jeopardy-style combinatorial proof of 
+\[
+\binom{m+n}{r} = \sum_{k=0}^{r} \binom{m}{r-k}\binom{n}{k}.
+\]
+Ask one question; answer it two ways; be careful to justify every step of your answers! \\\\
+\textbf{Solution:}\\\\
+\textbf{Made up question:}\\ Take a group of m people and a group of n people. Out of all the people in those two groups, how many ways can you make teams of r people can you make? \\\\
+\textbf{Solution 1:}\\ When approaching classic team-selection problems, it is often most straightforward to use the binomial coefficient: \[\binom{n}{k}\] as this directly counts the number of ways to choose  k objects from n items. In this problem, the total number of people available to choose from is 
+n+m, and the number we are selecting is r. Therefore, the total number of possible selections is given by \[\binom{m+n}{r}\] \\\\
+\textbf{Solution 2:}\\
+When approaching this problem, we can think of it as selecting players from each team individually and then combining the chosen players. For example, let k represent the number of people selected from team n. We can choose these 
+k people from team n using \[\binom{n}{k}\] these k individuals make up part of the total r people we need. We then select the remaining r-k people from the other team (with m members) using \[\binom{m}{r-k}\] Because k can vary ranging from 0 to r we must sum over all possible values of k to cover every possible combination. This leads to the final expression:
+\[\sum_{k=0}^{r}\binom{m}{r-k}\*\binom{n}{k}\]
+
+\begin{itemize}
+\item \textbf{Who Contributed:} Michael Ku was the main contributor, doing the formal write-up of the solution. Pranav Bonthu and Dhvan Shah compared their solutions to Michael's and provided feedback and edits.
+\item \textbf{Resources}: No resources were used.
+\item \textbf{Main points:}  For our group, the central ideas of this problem were understanding combinatorial proofs, formulating a question from a solution, and recognizing how two different solutions can yield the same result.
+\end{itemize}
+\end{document}
+
