@@ -1,0 +1,68 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{discrete}
+
+\title{Discrete hw 3 problem 1}
+\author{Pranav B}
+\date{September 2025}
+
+\begin{document}
+
+\maketitle
+
+\section{The Dice Roll Problem}
+
+For this problem, our goal is to determine the amount of possible outcomes there are from rolling a dice 13 times results in a sum of the rolls being 32 or less. 
+
+Before we start to solve this problem, we can think of the outcome of the roll of the dice as "points" (ex: Rolling a 6 is 6 points).
+
+We can say that we are finding the cardinality of outcomes that have a sum of 32 points or fewer.
+
+Since we have 13 dice and at most 32 points, we can employ the sticks and stones method to help us solve this problem. First, we must realize that any roll will have a value of at least 1. This means that our absolute minimum outcomes is going to be 13. This means that we can pre-load each bucket (dice outcome) with 1. 
+
+This means that we have at most (32-13 = ) 19 available points to distribute among the dice, or the buckets. Since we are dealing with a problem in which we do not need to use all 32 points, we need to add an extra bucket that accounts for unused points. This means that we have 13 + 1 - 1 sticks in our equations ( 13 dice, 1 extra bucket for unused points, and remove one so that we have the proper amount of buckets).
+
+Now we see that we are left with 19 points and 13 sticks. This means that the total number of ways we can arrange these sticks and stones is \[32 \choose 13\]
+
+But, this does not take into account when buckets, or dice, get more than 6 points assigned to them. We can use use inclusion and exclusion to remove impossible outcomes. 
+
+To eliminate outcomes where a dice has 7 or points within its bucket, we can pre load one of the dice with 6 more points (7 total now as we already pre-loaded each dice bucket with 1). This will help us find all of the outcomes that need to be removed for when a specific dice has an impossible scenario. 
+
+
+For example, lets say that in our A1, we are determining how many  scenearios there are where the bucket of dice 1 has 7 or more points. We will still have the same amount of sticks, but since we are pre-loading one of the buckets with 6 more points, we will have (19-6 =) 13 points, or stones. This means that for our A1 scenario, there are \[26 \choose 13\] outcomes. 
+
+We can do this for every bucket (for now we will do this for the "not-used" bucket as well and account for these outcomes later), meaning that we have to remove 14 * \[26 \choose 13\] outcomes from our total. 
+
+Now we need to account for all the outcomes where 2 dice have 7 or more points in their buckets. Our A1 for this situation is when dice 1 and 2 both have 7 or more points. Again, we will account remove 6 additional points, or stones, from our remaining, leaving us with (13-6 =7) points. Our sticks will stay the same at 13, so the total arrangements we can make in this scenario is \[20\choose 13\]. 
+
+Since we need to account for all combinations of two bucket pairings, which is \[14\choose 2\], combinations (we will still include the "not-used" bucket for now). This means that there are \[(14 \choose 2) \cdot 20\choose 13\], outcomes where 2 buckets have 7 or more points. 
+
+\[
+\(14\choose2\) \cdot\(20\choose 13\)
+\]
+
+These outcomes were accounted for twice each when we looked at the situation where at least 1 bucket had at least 7 points, so we need to add  back the situations where at least 2 buckets have at least 7 points.
+
+Now, we will account for situations where 3 buckets have at least 7 points. So again, we will pre-load a third bucket, and remove 6 points, or stones, for a total of 1 more remaining stone (still 13 sticks). For this situation, our A1 will be where buckets for rolls 1,2, and 3, all have at least 7 points. There is \[14\choose 13\] ways to do this. Now, we need to do this for every combination of 3 buckets, which is expressed as \[14\choose 3\]. Since we are doing this for every combination of groups of 3 dice, we will need to remove \[14\choose 3\] * \[14\choose 13\] from our total. We are remvoing these because we we account for them in both the at least 1 dice had 7 points as well the scenarios where we had at least 2 dice with 7 points. 
+
+So far, we have removed every scenario in which the "not-used" bucket has 7 or more points. But, this bucker is the only bucket that CAN have more than 7 points, so we will re-evaluate these scenarios. 
+
+For the scenario where there was at least 1 bucket with at least 7 points, which is \[26 \choose 13\] outcomes. This is because this is the total amount of combination possible when we preload the "not used bucket"
+
+For the scenario where at least 2 buckets have at least 7 points, there are 
+\[20 \choose 13\] * 13 cases where the "not-used" bucket. This is because in every sceneario where the "not-used" butcket is pre-loaded, there are \[20 \choose 13\] and there are 13 scenarios where the "not-used" bucket is used (one combination with each other bucket). Since these cases are not distinct, we multiply them.
+
+For the scenerio where at least 3 buckets have at least 7 points, the "not-used" bucket is preloaded in \[14 \choose 13\] * \[2 \choose 13\] outcomes. This is because there are \[2 \choose 13\] ways to group the "no-outcome" bucket with 2 other buckets and each grouping has \[14 \choose 13\] Arrays. Since these cases are not distinct, we multiply them.
+
+This leaves us with the final equation:
+
+\[32 \choose 13\] - (14 * \[26 \choose 13\] - \[26 \choose 13\]) + (\[20 \choose 13\] * \[14 \choose 2\] - 13 * \[20 \choose 13\]) - (\[14 \choose 13\] * \[14 \choose 3\] - \[14 \choose 13\] * \[13 \choose 2\])
+
+
+
+
+
+
+
+
+\end{document}
