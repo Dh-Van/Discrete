@@ -1,14 +1,7 @@
-\documentclass{article}
-\usepackage{graphicx} % Required for inserting images
-\usepackage{discrete}
-
-\title{Discrete hw 3 problem 1}
-\author{Pranav B}
-\date{September 2025}
+\documentclass[11pt]{article}
+\usepackage{../../discrete}
 
 \begin{document}
-
-\maketitle
 
 \section{The Dice Roll Problem}
 
@@ -30,19 +23,19 @@ But, this does not take into account when buckets, or dice, get more than 6 poin
 To eliminate outcomes where a dice has 7 or points within its bucket, we can pre load one of the dice with 6 more points (7 total now as we already pre-loaded each dice bucket with 1). This will help us find all of the outcomes that need to be removed for when a specific dice has an impossible scenario. 
 
 For example, lets say that in our A1, we are determining how many scenearios there are where the bucket of dice 1 has 7 or more points. We will still have the same amount of sticks, but since we are pre-loading one of the buckets with 6 more points, we will have (19-6 =) 13 points, or stones. This means that for our A1 scenario, there are  
-$$\binom{26}{13}$$  
+$$\binom{26}{13}$$
 outcomes. 
 
 We can do this for every bucket (for now we will do this for the "not-used" bucket as well and account for these outcomes later), meaning that we have to remove  
 $14 \cdot \binom{26}{13}$ outcomes from our total. 
 
 Now we need to account for all the outcomes where 2 dice have 7 or more points in their buckets. Our A1 for this situation is when dice 1 and 2 both have 7 or more points. Again, we will account remove 6 additional points, or stones, from our remaining, leaving us with (13-6 =7) points. Our sticks will stay the same at 13, so the total arrangements we can make in this scenario is  
-$$\binom{20}{13}.$$  
+$$\binom{20}{13}.$$
 
 Since we need to account for all combinations of two bucket pairings, which is  
 $\binom{14}{2}$,  
 combinations (we will still include the "not-used" bucket for now). This means that there are  
-$$\binom{14}{2} \cdot \binom{20}{13}$$  
+$$\binom{14}{2} \cdot \binom{20}{13}$$
 outcomes where 2 buckets have 7 or more points.  
 
 $$\binom{14}{2} \cdot \binom{20}{13}$$
@@ -50,32 +43,28 @@ $$\binom{14}{2} \cdot \binom{20}{13}$$
 These outcomes were accounted for twice each when we looked at the situation where at least 1 bucket had at least 7 points, so we need to add back the situations where at least 2 buckets have at least 7 points.
 
 Now, we will account for situations where 3 buckets have at least 7 points. So again, we will pre-load a third bucket, and remove 6 points, or stones, for a total of 1 more remaining stone (still 13 sticks). For this situation, our A1 will be where buckets for rolls 1,2, and 3, all have at least 7 points. There is  
-$$\binom{14}{13}$$  
+$$\binom{14}{13}$$
 ways to do this. Now, we need to do this for every combination of 3 buckets, which is expressed as  
 $\binom{14}{3}$. Since we are doing this for every combination of groups of 3 dice, we will need to remove  
-$$\binom{14}{3} \cdot \binom{14}{13}$$  
+$$\binom{14}{3} \cdot \binom{14}{13}$$
 from our total. We are removing these because we we account for them in both the at least 1 dice had 7 points as well the scenarios where we had at least 2 dice with 7 points. 
 
 So far, we have removed every scenario in which the "not-used" bucket has 7 or more points. But, this bucket is the only bucket that CAN have more than 7 points, so we will re-evaluate these scenarios. 
 
 For the scenario where there was at least 1 bucket with at least 7 points, which is  
-$$\binom{26}{13}$$  
+$$\binom{26}{13}$$
 outcomes. This is because this is the total amount of combination possible when we preload the "not used bucket".
 
 For the scenario where at least 2 buckets have at least 7 points, there are  
-$$\binom{20}{13} \cdot 13$$  
+$$\binom{20}{13} \cdot 13$$
 cases where the "not-used" bucket. This is because in every sceneario where the "not-used" bucket is pre-loaded, there are $\binom{20}{13}$ and there are 13 scenarios where the "not-used" bucket is used (one combination with each other bucket). Since these cases are not distinct, we multiply them.
 
 For the scenario where at least 3 buckets have at least 7 points, the "not-used" bucket is preloaded in  
-$$\binom{14}{13} \cdot \binom{2}{13}$$  
+$$\binom{14}{13} \cdot \binom{2}{13}$$
 outcomes. This is because there are $\binom{2}{13}$ ways to group the "no-outcome" bucket with 2 other buckets and each grouping has $\binom{14}{13}$ Arrays. Since these cases are not distinct, we multiply them.
 
 This leaves us with the final equation:
 
-$$
-\binom{32}{13} - \big(14 \cdot \binom{26}{13} - \binom{26}{13}\big) 
-+ \big(\binom{20}{13} \cdot \binom{14}{2} - 13 \cdot \binom{20}{13}\big) 
-- \big(\binom{14}{13} \cdot \binom{14}{3} - \binom{14}{13} \cdot \binom{13}{2}\big)
-$$
+$$\binom{32}{13} - (14 \cdot \binom{26}{13} - \binom{26}{13}) + (\binom{20}{13} \cdot \binom{14}{2} - 13 \cdot \binom{20}{13}) - (\binom{14}{13} \cdot \binom{14}{3} - \binom{14}{13} \cdot \binom{13}{2})$$
 
 \end{document}
