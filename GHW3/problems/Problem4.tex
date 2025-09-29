@@ -1,0 +1,37 @@
+\documentclass[11pt]{article}
+\usepackage{discrete}
+
+\begin{document}
+
+\section{The fruit problem}
+
+In this problem, we need to determine how many possible ways there are to distribute 9 distinct apples and 8 identical mangos among 5 kids, with each kid getting at least one mango.
+
+To start, we can split this problem into 2 parts, one part for how the mangos are distributed and the second being how the apples are distributed.
+
+When looking at how the mangos can be distributed, we can use sticks and stones. The buckets that the sticks create will represent the children, and the stones will be the mangos.
+
+This mean we will have 5 - 1 = 4 sticks (5 children and remove one as n-1 sticks are needed to create n buckets) and 8 (as there are 8 mangos)
+
+Since we know that each child needs to get at least 1 mango, we can preload each bucket (representing a child) with 1 mango. This leaves us with 8 - 5 = 3 mangos (or stones) left to distribute.
+
+We now have 4 sticks and 3 stones remaining. So, the amount of ways we can arrange the sticks (the total amount of outcomes to distribute the mangos), is equal to  $\binom{7}{4}$
+
+Now we will look at how many ways we can distribute the apples. Each apple is distinct, meaning none are the same.
+
+Each of the 9 apples can go to any one of the 5 children. This means that an individual apple has 5 possible outcomes. Since each apple has 5 outcomes, there are 9 apples, and the outcomes are not distinct, there are $5^9$ total outcomes for how the apples can be distributed.
+
+Since the outcomes for the mango distribution and the distribution of the apples are not distinct, we can multiply both total outcomes to get the total outcomes of the problem. 
+
+This means our final answer for the total possible outcomes is:  $$\binom{7}{4} \cdot  5^9$$
+
+
+\begin{itemize}
+    \item \textbf{Who Contributed:} Pranav Bonthu was the main contributor, doing the formal write-up of the solution. Dhvan Shah and Michael Ku compared their solutions to Pranav's and provided feedback and edits.
+    \item \textbf{Resources}: No resources used
+    \item \textbf{Main points:} Based on group discussions, we felt that the main point of this problem was to understand how to define 2 different scenarios and how to combine them in the end 
+\end{itemize}
+
+
+
+\end{document}
