@@ -1,22 +1,41 @@
 \documentclass{article}
-\usepackage{../../discrete}
+\usepackage{discrete}
 \begin{document}
 \section*{Problem 6}
-\textbf{Question:}\\ Suppose you have 32 identical candies. How many ways can you distribute some, but not necessarily all, of these 32 candies to 13  children if each child must get at least one candy? Fully justify and explain your reasoning/work. (Your solution should somehow allow for every case, ranging from distributing a max of all 32 candies to a min of only distributing 13 candies.)\\\\
-\textbf{Solution:}\\In this problem, we are asked to distribute 32 candies among 13 children under certain conditions. Specifically, each child must receive at least one candy. Because of this restriction, we can use the sticks and stones method. For 13 children, we need 12 dividers (sticks) to create 13 “buckets,” one for each child. \\\\
-Since each child is guaranteed at least one candy, we can preload one candy into each bucket.
-\[*|*|*|*|*|*|*|*|*|*|*|*|*\]
-This immediately uses up 13 candies, leaving us with $32-13=19$ candies to distribute freely among the 13 children. The number of ways to distribute these remaining candies is:
-\[\binom{19+13-1}{13-1} = \binom{31}{12}\]
-Which represents the 19 candies plus the the 12 sticks that would be used to divide the candy between all the children. This would be the answer if all 32 candies had to be used. However, the question states that not all candies must be used. To account for this, we introduce an additional “discard” bucket to represent unused candies. Adding this bucket increases the total number of “buckets” to 14, which requires 13 dividers. We then have 32 candies and 14 buckets (13 children + 1 discard). The total number of distributions, including the possibility of leftover candies, is:\\
-\[\binom{19+14-1}{14-1}\]
-Thus, the final answer is:
-\[\binom{32}{13}\]
+\textbf{Question:}\\ Give a Jeopardy-style combinatorial proof of the given equation. You know several interpretations of C(n,k), which we have been writing as
+(first introduced in Section 4.3), and you can revisit Section 6.6 to see the definition of derangements $D_n$ as the number of permutations of distinct objects that leave no object in its original position. Ask one question that can be answered twice, once for each side of the given equation.  Do not manipulate either side with algebra. Use well-explained sentences to justify all aspects of your answers! \\\\
+\[
+n! = C(n,0)D_n + C(n,1)D_{n-1} + C(n,2) D_{n-2} + \cdots + C(n,n-1)D_1 + C(n,n)D_0
+\]
+\textbf{Jeopardy Style Question:}\\
+How many ways are there to organize n distinct books on a bookshelf?\\\\
+\textbf{Solution 1:}\\
+We solve this problem by classifying permutations according to how many books remain in their original positions and then summing over all such cases.
+If exactly $k$ books remain fixed, we must first choose which $k$ books stay in place. This can be done in $\binom{n}{k}$ ways.\\
+The remaining $n-k$ books must all move to positions different from their originals. The number of ways to do this is $D_{n-k}$, the derangement number of size $n-k$ (the number of permutations of $n-k$ objects with no fixed points).\\
+Thus, the total number of permutations with exactly $k$ fixed books is
+\[
+\binom{n}{k}D_{n-k}.
+\]
+Since every permutation of $n$ books has some specific number $k$ of fixed books, summing over all possible values of $k$ from $0$ to $n$ counts every permutation exactly once:
+\[
+\sum_{k=0}^{n}\binom{n}{k}D_{n-k}.
+\]
+In particular, when $k=0$ no books remain in their original positions; the term
+\[
+\binom{n}{0}D_{n}
+\]
+counts exactly the number of complete derangements of all $n$ books (i.e.\ permutations where none of the books is in its original position).\\\\
+\textbf{Solution 2:}\\
+A well-known way to solve this problem is to use the factorial definition. When we place the first book out of the $n$ books on the shelf, we have $n$ options for which book goes into the first slot. After that, we are left with $n-1$ options for the second slot, then $n-2$ for the next, and so on until all the slots have been filled. Applying the product rule (multiplying the number of possibilities at each step), we obtain the pattern  
+\[
+n \times (n-1) \times (n-2) \times (n-3)\cdots \times (n-(n-1)).
+\]  
+This is exactly the definition of a factorial: we multiply by each successive integer one less than the previous until we reach $1$. Therefore, $n!$ gives the total number of ways to arrange $n$ books.  \\
 \begin{itemize}
-
-    \item \textbf{Who Contributed:} Michael Ku was the main contributor, doing the formal write-up of the solution. Pranav Bonthu and Dhvan Shah compared their solutions to Michael's and provided feedback and edits.
-    \item \textbf{Resources}: No resources were used.
-    \item \textbf{Main points:}  For our group, the central ideas of this problem were understanding the sticks-and-stones method and examining how different conditions, such as every child receiving at least one candy or not all the candy being used, affect the answer.
+\item \textbf{Who Contributed:} MMichael Ku was the main contributor, doing the formal write-up of the solution. Pranav Bonthu and Dhvan Shah compared their solutions to Michael's and provided feedback and edits.
+\item \textbf{Resources}: Textbook (section 6.6)
+\item \textbf{Main points:} The main goal of this question is to examine a solution and understand how it can be applied to solving a similar problem. In addition, it encourages a deeper look into the definition of a derangement and how it can be used to approach problems in a different way.
 \end{itemize}
 \end{document}
 

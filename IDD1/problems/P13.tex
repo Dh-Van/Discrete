@@ -1,0 +1,31 @@
+\documentclass[11pt]{article}
+\usepackage{../../discrete}
+
+\begin{document}
+
+\section*{Problem 1.3}
+\textbf{Question:}
+
+Suppose that $m$ identical-looking Blue Men are on the elevator which stops at $30$ floors, but no Blue Men exit on at least $3$ (random not pre-determined) floors, and some Blue Men might stay on the elevator and joyride back down. On each floor, any Blue Men who exit do so in a group, not in an ordered line.
+
+\textbf{Solution Summary:}
+
+The total number of ways Blue Men can exit or joyride the elevator, with at least $3$ empty floors:
+$\binom{m + 30}{30} - (\binom{30}{0} \binom{m}{30} + \binom{30}{1} \binom{m}{29} + \binom{30}{2} \binom{m}{28})$
+
+\textbf{Justification:}
+
+To solve this problem we can define set $A$. $A$ is the set of all combinations of ways that Blue Men can either exit or joyride the elevator. We can represent all the floors as sticks and all the Blue Men as stones. There are 30 floors, which means we only need 29 sticks to form the 30 bins. However, we need an extra bin to account for the option of joyriding the elevator. This means there are $m$ stones and $30$ sticks. Now we can solve for $|A|$, by counting the number of ways to arrange $30$ sticks amongst $m + 30$ sticks and stones: $\binom{m + 30}{30}$.
+
+Next we define set $A_0$. $A_0$ is the set of all combinations of ways that Blue Men can either exit or joyride the elevator, where there are exactly 0 empty floors. We first need to pick a floor to be empty. This involves choosing 0 floors to be empty out of 30: $\binom{30}{0}$. Now to force exactly 0 floors to be empty, we preload each floor with a Blue Man. Since each Blue Man is identical, there is only 1 way to do this.
+
+Now we can think about there being $m$ stones again. This time we need to account for the preplaced Blue Men, by subtracting 30 from m: $m - 30$. We have the same $30$ sticks from above, so we pick where the sticks go amongst the stones: $\binom{m - 30 + 30}{30} = \binom{m}{30}$. Now we solve for $|A_0|$ by using the product rule: $|A_0| = \binom{30}{0} \binom{m}{30}$.
+
+But we want there to be at least 3 empty floors. So we must do the same for there being exactly 1 empty floor. We define $A_1$ as there being exactly 1 empty floor. We pick 1 floor to be empty out of 30: $\binom{30}{1}$. Then we preload the Blue Men, but this time we only preload them on 29 floors, because we need 1 floor to be empty. So we now have $m - 29$ stones. We also don't want to sort any other Blue Men to be on that empty floor. To do this, we can just get rid of the stick representing that empty floor. So we now only have $30 - 1 = 29$ sticks. Now we pick where the sticks go amongst the stones: $\binom{m - 29 + 29}{29} = \binom{m}{29}$. Using the product rule, we solve again for $|A_1|$: $|A_1| = \binom{30}{1} \binom{m}{29}$
+
+We use this same reasoning for $A_2$, but we would preload only 28 Blue Men, and have only 28 sticks: $|A_2| = \binom{30}{2} \binom{m - 28 + 28}{28}$
+
+Finally, we can solve for the total number of ways with at least 3 empty floors:
+$|A| - (|A_0| + |A_1| + |A_2|) = \binom{m + 30}{30} - (\binom{30}{0} \binom{m}{30} + \binom{30}{1} \binom{m}{29} + \binom{30}{2} \binom{m}{28})$
+
+\end{document}

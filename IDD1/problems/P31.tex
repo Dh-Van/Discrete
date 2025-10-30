@@ -1,0 +1,30 @@
+\documentclass[11pt]{article}
+\usepackage{../../discrete}
+
+\begin{document}
+\section*{Problem 3.1}
+\textbf{Question:}
+
+How many ways can these 1000 distinct-looking Un-Blue Men empty out of the elevator, in groups not ordered lines, at the 30 different floors, where it matters which specific Un-Blue Man gets off on which floor as you can now see the people as distinct, where at least one Un-Blue Man gets off at each floor, and where all Un-Blue Men have exited by the time this elevator ride is over?
+
+\textbf{Solution Summary:}
+
+The number of ways these Un-Blue Men empty out of the elevator:
+$\sum_{i=0}^{30}{(-1)^{i} \binom{30}{i} (30 - i) ^ {1000}}$
+
+\textbf{Justification:}
+
+To solve this problem, we can start by defining set $A$: $A$ is the set of all ways the Un-Blue men can leave the elevator. Since we know that the elevator is empty at the end, each person has 30 choices of floor to get off. This means $|A| = 30 \cdot 30 \cdot ... \cdot 30 = 30^{1000}$
+
+However, we know that no floor can be empty. This means we must subtract the bad cases where a floor is empty to get the final answer. We can define set $A_1$ as the set where at least one floor is empty. If at least one floor is empty, then each person now only has 29 choices of floor to get off: $29^{1000}$. But we also have to pick the empty floor. This means we have to choose 1 floor to be empty out of 30: $\binom{30}{1}$. Combining these, we get $|A_1| = \binom{30}{1} 29^{1000}$
+
+We can't simply just subtract the above value from $|A|$, since we are over counting scenarios where more than two floors are empty. To correct for this, we can define set $A_2$ as the set where at least two floors are empty. Each person now only has 28 choices of floor to get off: $28^{1000}$. We again have to pick two floors to be empty out of 30: $\binom{30}{2}$. Combining these, we get $|A_2| = \binom{30}{2} 28 ^ {1000}$ This time, we would add this value to the above subtraction, to account for the over counting.
+
+We keep doing this process, for all 30 floors. The final case, $A_{30}$, is when all the floors are empty. Using the above pattern, $|A_{30}| = \binom{30}{30} 0^{1000} = 0$, which makes complete sense. If all the Un-Blue Men must get off at a floor, then there should be 0 combinations where all the floors are empty.
+
+Combining all the above using Sum Rule:
+$|A| - |A_1| + |A_2| - ... + |A_{30}| = \binom{30}{0} 30^{1000} - \binom{30}{1} 29 ^ {1000} + \binom{30}{2} 28 ^ {1000} - ... + 0$
+
+We can write the above as a summation:
+$\sum_{i=0}^{30}{(-1)^{i} \binom{30}{i} (30 - i) ^ {1000}}$
+\end{document}

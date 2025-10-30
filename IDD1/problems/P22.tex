@@ -1,0 +1,27 @@
+\documentclass[11pt]{article}
+\usepackage{../../discrete}
+
+\begin{document}
+\section*{Problem 2.2}
+\textbf{Question:}
+
+After winning chips, players can queue at $20$ different cashier stations to trade their chips for cash. The cashier stations are numbered $1$ to $20$, and they each have a different cashier, so these lines are different. Suppose you have $p$ people who are going to line up themselves in front of the $20$ different cashiers, but some cashiers might get no people in line. The lines that do form in front of any cashiers are definitely ordered. Imagine that $b$ of the $p$ people are identical looking Blue Men, $c$ of the $p$ people are identically-costumed and therefore indistinguishable circus artists from Cirque du Soleil, and $d$ of them are regular people who are, of course, distinguishable from each other. To avoid any doubt: All $p$ people must be in some line to cash out, but not all cashier stations must have people lined up in front of them. How many ways can these line(s) form?
+
+\textbf{Solution Summary:}
+
+The number of ways these lines can form is:
+$\frac{(b + c + d + 19)!}{b!c!19!}$
+
+\textbf{Justification:}
+
+We can solve this problem by imagining that everyone is going to stand in one long line. Everyone to the right of a cashier will be in that cashiers line, effectively making each cashier a Divider. We want there to be 20 sections in this line, which means we need to use 19 Dividers (cashiers).
+
+We can count the number of ways to order a line of $N$ items, by doing: $N!$. For now, we can assume that everyone is distinct. The total number of items in this line are the Blue Men, the Circuit Artists, the Regular People and the Dividers: $N = b + c + d + 19$. This means that there are $N! = (b + c + d + 19)!$ ways to order this line.
+
+However, we know that the Blue Men, the Circus Artists and the Cashiers are all identical. We can have a distinct line where the $b$ Blue Men are in specific positions. The above factorial over counts this line by $b!$, where each Blue Man could be in any of the $b$ positions. This applies to every unique pattern in the line, which means we need to divide $N!$ by $b!$: $\frac{N!}{b!}$.
+
+We can use the above reasoning with the Circus Artists and the Cashiers as well: $\frac{N!}{b!c!19!}$
+
+Therefore, the number of ways these lines can form is:
+$\frac{(b + c + d + 19)!}{b!c!19!}$
+\end{document}

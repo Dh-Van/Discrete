@@ -1,0 +1,47 @@
+\documentclass[11pt]{article}
+\usepackage{../../discrete}
+
+\begin{document}
+\section*{Problem 4.3}
+\textbf{Question:}
+
+Provide a TRIPLE Jeopardy-style combinatorial proof of the following equation:
+
+$\sum_{k=0}^{m}{\binom{m}{k} (x - 1)^k} = x^m = \sum_{k = 0}^{m}{\binom{m}{k} (-1)^k (x + 1)^{m - k}}$
+
+\textbf{Jeopardy Answer:}
+
+How many unique strings of length $m$ can be made with $x$ letters.
+
+\textbf{Solution 1:}
+
+We are trying to make a string of length $m$ from $x$ letters. This means that each position in the string has $x$ options: $x \cdot x \cdot ... \cdot x$. We can rewrite this as: $x^m$. So there are $x^m$ unique strings of length $m$ with $x$ distinct letters.
+
+\textbf{Solution 2:}
+
+We can reframe this problem by thinking about the number of unique strings that have non-`A' characters in exactly $2$ positions. To count the number of strings we can make this way, we can think about choosing $2$ positions from the entire length $m$ to be some character other than `A': $\binom{m}{2}$. Then for each of those positions, there is only $x - 1$ options of letters to pick from, since we already accounted for the `A's: $(x - 1)^{2}$. Now we count the number of ways we can put the `A's in, which has to be 1, since there are $m-2$ positions left in the string and the `A's are identical.
+
+We can use the above analogy to count all the total number of unique strings of length $m$ with $x$ letters. We know that non-`A' characters can appear anywhere from $0$ to $m$ times in the string. This just means that to count the total number of strings, we need to use the sum rule to add up the strings with exactly 0 non-`A's, exactly 1 non-`A', ... exactly $m$ non-`A's: $\binom{m}{0} (x - 1)^0 + \binom{m}{1} (x - 1)^{1} + ... + \binom{m}{m} (x - 1)^{m}$. We can see that in the first term, where there are exactly 0 non-`A's (all `A's), we get: $\binom{m}{0} (x - 1)^{0}$, which simplifies to $1$. This makes sense, as there is exactly 1 string of length $m$, with $m$ `A's.
+
+We can rewrite the above as a summation:
+$\sum_{k=0}^{m}{\binom{m}{k} (x - 1)^{k}}$
+
+\textbf{Solution 3:}
+
+We can again reframe this problem by imagining that the letter `A' is an invalid character, not counted in the $x$ letters. If we make strings of length $m$ using $x$ characters plus the invalid character `A', then we get $(x + 1)^m$ ways to make the string, since each position now has $x + 1$ options.
+
+Since we want to only count the number of strings that have the original $x$ characters, we have to subtract the bad cases. The first bad case is when there is at least one `A' in the string. We can count the number of strings that have at least one `A' by choosing 1 position out of m to have the `A': $\binom{m}{1}$. This guarantees that there is an `A', so the rest of the string has $x + 1$ options for each position: $(x + 1)^{m - 1}$. We would subtract this value from the total number of strings: $(x + 1)^m - \binom{m}{1} (x + 1)^{m-1}$
+
+Just subtracting the above two values is incorrect, since we counted strings with more than 1 `A' in them twice. So we must add those back to the above subtraction. We use a similar process as above, but this time we have to pick 2 positions: $\binom{m}{2} (x + 1)^{m - 2}$. This addition would overcount any strings with more than 2 `A's, so we must repeat this process in an alternating pattern to get the total number of strings. If we use the above pattern, the last value would be subtracting (or adding) 1: $\binom{m}{m} (x + 1)^{m - m} = 1 (x + 1)^0 = 1$. This makes sense, since there is only one way to have a string with all `A's.
+
+We can write out the expression:
+$\binom{m}{0} (x + 1)^{m - 0} - \binom{m}{1} (x + 1)^{m - 1} + \binom{m}{2} (x + 1)^{m - 2} - ... +  \binom{m}{m} (x + 1)^{m - m}$
+
+As a summation:
+$\binom{m}{k} (-1)^k (x + 1)^{m - k}$
+
+\textbf{Conclusion:}
+
+Since all 3 of the above count the exact same number of things, they must be equivalent.
+
+\end{document}
