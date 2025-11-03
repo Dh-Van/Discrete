@@ -1,10 +1,20 @@
 \documentclass[11pt]{article}
-\usepackage{discrete}
+\usepackage{../../discrete}
 
 \begin{document}
 
-\section{Problem 4 Part C}
+\section*{Problem 4}
 
+
+\textbf{Part A:}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.55\linewidth]{P1a.pdf}
+    \caption{The 17 subgraphs of $K_3$}
+    \label{fig:placeholder}
+\end{figure}
+
+\textbf{Part C:}\\
 In order to determine how many subgraphs with at least 1 vertex from a $K_n$ complete graph with $n$ vertices, we can start by looking at how many possible vertices can be included in each subgraph.
 
 Since there are $n$ vertices in the graph, and each subgraph must have at least 1 vertex, a subgraph can have $n$, $n-1$, $n-2$, \ldots, 2, or 1 vertices.
@@ -24,7 +34,7 @@ This leaves us with the equation $(2^{\binom{i}{2}}) \times \binom{n}{i}$ for th
 To find the total number of subgraphs, we need to do this with every possible value between 1 and $n$ and add up the total. This gives us the equation
 
 \[
-\sum_{i=1}^{n} \binom{n}{i} 2^{\binom{i}{2}}.
+    \sum_{i=1}^{n} \binom{n}{i} 2^{\binom{i}{2}}.
 \]
 
 \end{document}
