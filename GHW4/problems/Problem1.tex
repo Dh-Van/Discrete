@@ -1,0 +1,30 @@
+\documentclass[11pt]{article}
+\usepackage{discrete}
+
+\begin{document}
+
+\section{Problem 4 Part C}
+
+In order to determine how many subgraphs with at least 1 vertex from a $K_n$ complete graph with $n$ vertices, we can start by looking at how many possible vertices can be included in each subgraph.
+
+Since there are $n$ vertices in the graph, and each subgraph must have at least 1 vertex, a subgraph can have $n$, $n-1$, $n-2$, \ldots, 2, or 1 vertices.
+
+To find the total amount of subgraphs of the $K_n$ complete graph, we must find how many subgraphs can be made of each combination of vertices.
+
+For example, the subgraphs of a $K_3$ graph may have 3, 2, or 1 vertices. To find the total subgraphs of $K_3$, we need to find how many subgraphs can be made from 3 vertices, how many from 2, and how many from 1. We would then be able to find the sum by adding up each of these totals.
+
+We need to know how many ways there are to make a subgraph, given a certain amount of vertices. To do this, we can determine how many possible edges there are, which is represented by $\binom{i}{2}$, where $i$ is the number of vertices. This represents the number of edges since an edge is a connection between 2 vertices, so the total combinations of 2 vertices are equal to the number of edges.
+
+We also know that in each subgraph, the edges can either be present or not present. Since there are 2 options for each edge, we can say that the total possible combinations of edges is $2^{\binom{i}{2}}$.
+
+Next, since each vertex is named, they are distinguishable. This means we need to find the combinations possible for picking $i$ vertices. This can be represented by $\binom{n}{i}$, where $n$ is the number of total vertices in the set, and $i$ is the amount of vertices in the subgraph.
+
+This leaves us with the equation $(2^{\binom{i}{2}}) \times \binom{n}{i}$ for the amount of subgraphs that can be made with $i$ vertices.
+
+To find the total number of subgraphs, we need to do this with every possible value between 1 and $n$ and add up the total. This gives us the equation
+
+\[
+\sum_{i=1}^{n} \binom{n}{i} 2^{\binom{i}{2}}.
+\]
+
+\end{document}
