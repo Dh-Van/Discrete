@@ -1,0 +1,34 @@
+\documentclass{article}
+\usepackage{discrete}
+\begin{document}
+\section*{Problem 2}
+\textbf{Part A:}\\ 
+\textbf{Question:}\\ 
+How many non-isomorphic (simple) graphs can you draw on four vertices? \textit{\textbf{From the provided solutions, you know the answer is 11. Draw one representative from each isomorphism class to show that you know where the 11 comes from. You can hand-draw these and submit a photo of them!}}    \\\\
+\textbf{Solution:}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.75\linewidth]{Untitled drawing (1).pdf}
+    \caption{The 11 Non-isomorphic graphs that can be made with four vertices}
+    \label{fig:placeholder}
+\end{figure}\\
+\textbf{Part B:}\\ 
+\textbf{Question:}\\ 
+Suppose you have a set $A$ whose elements are graphs on four vertices. Suppose $|A| = 25$. Without finding them, can you prove that there are three graphs in $A$ that are pairwise isomorphic (meaning every pair of the three graphs are isomorphic)? In other words, show that there are three graphs $G_1, G_2, G_3 \in A$ such that $G_1 \cong G_2$, $G_1 \cong G_3$, and $G_2 \cong G_3$ \textit{(without finding the actual graphs)}.\\\\
+\textbf{Solution:}\\
+We want to prove that there exist three graphs in $A$ that are pairwise isomorphic. To do this, we apply the Pigeonhole Principle. \\From previous results, there are exactly $11$ non-isomorphic graphs on four vertices. This means that all possible graphs on four vertices can be grouped into $11$ isomorphism classes. Each graph in $A$ must belong to one of these classes, where all graphs within the same class are isomorphic to each other.
+\\We can treat the isomorphism classes as the \textit{holes} and the $25$ graphs in $A$ as the \textit{pigeons}. If each of the $11$ holes contained at most two pigeons, the maximum number of graphs we could have without any three being isomorphic would be
+\[
+11 \times 2 = 22.
+\]
+However, since $|A| = 25 > 22$, by the Pigeonhole Principle, at least one class must contain at least three graphs. Therefore, there exist three graphs $G_1, G_2, G_3 \in A$ such that
+\[
+G_1 \cong G_2, \quad G_1 \cong G_3, \quad \text{and} \quad G_2 \cong G_3.
+\]
+Hence, there are at least three graphs in $A$ that are pairwise isomorphic.
+\begin{itemize}
+\item \textbf{Who Contributed:} Michael Ku was the main contributor, doing the formal write-up of the solution. Pranav Bonthu and Dhvan Shah compared their solutions to Michael's and provided feedback and edits.
+\item \textbf{Resources}: No resources were used.
+\item \textbf{Main points:} The main goal of this question was to get comfortable identifying which graphs are isomorphic to each other and which are not. Additionally, it demonstrates how other techniques, such as the pigeonhole principle, can be applied in this context.
+\end{itemize}
+\end{document}
