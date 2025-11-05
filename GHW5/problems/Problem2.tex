@@ -1,0 +1,77 @@
+\documentclass{article}
+\usepackage{discrete}
+\begin{document}
+\section*{Problem 2}
+\textbf{Question:}\\
+Suppose you are making a new error control code over a quaternary alphabet using 0, 1, 2, 3 as your symbols. Find a recurrence relation and appropriate initial conditions to determine $q_n =$ the number of length $n$ codewords you can make if you must never have three (or more) consecutive 3s appearing. (A codeword is just a string of the symbols, in this case, a string of 0s, 1s, 2s, 3s.) Explain your work in detail. Please also include the first 10 terms, using computational power (such as Wolfram Alpha) if you wish.\\\\
+\textbf{Solution:}\\
+When looking at our question, we can break down the main conditions that our recursion equation must follow. We can use either 0, 1, 2, or 3 for values in our sequence. The only other condition is that we must not have three or more consecutive 3s in a single sequence. \\\\
+From this, we can define $q_n$ as the number of ways to make an $n$-long sequence without having three or more 3s in a row. From the beginning, we have four options for the first value:
+\begin{itemize}
+    \item A 0, which leaves $n-1$ positions left to fill and does not lead toward a rule break ($q_{n-1}$).
+    \item A 1, which leaves $n-1$ positions left to fill and does not lead toward a rule break ($q_{n-1}$).
+    \item A 2, which leaves $n-1$ positions left to fill and does not lead toward a rule break ($q_{n-1}$).
+    \item A 3, which is one step toward a rule break, so we must look deeper.
+\end{itemize}
+After placing a single 3, we have four options for what can happen next:
+\begin{itemize}
+    \item A 0, which leaves $n-2$ positions left to fill and ends the possible rule break (resets) ($q_{n-2}$).
+    \item A 1, which leaves $n-2$ positions left to fill and ends the possible rule break (resets) ($q_{n-2}$).
+    \item A 2, which leaves $n-2$ positions left to fill and ends the possible rule break (resets) ($q_{n-2}$).
+    \item A 3, which is a second step toward a rule break, so we must look deeper.
+\end{itemize}
+Finally, after placing a second 3 in a row, the next symbol must reset:
+\begin{itemize}
+    \item A 0, which leaves $n-3$ positions left to fill and ends the possible rule break (resets) ($q_{n-3}$).
+    \item A 1, which leaves $n-3$ positions left to fill and ends the possible rule break (resets) ($q_{n-3}$).
+    \item A 2, which leaves $n-3$ positions left to fill and ends the possible rule break (resets) ($q_{n-3}$).
+\end{itemize}
+And that is it. We cannot have a third 3 in a row, as that is a clear rule break. Summing all of those possibilities, we get our final equation below. This can also be seen in Figure 1.\\
+
+\noindent\textbf{Final Equation:}
+\[
+q_n \;=\; 3q_{n-1} \;+\; 3q_{n-2} \;+\; 3q_{n-3} \qquad (n \ge 3).
+\]
+From here, we solve for our initial conditions, which will be used to calculate the rest of the terms in the recurrence. \\
+
+\noindent\textbf{Initial Conditions:}
+\begin{itemize}
+    \item $q_0 = 1$ \quad (empty string)
+    \item $q_1 = 4$ \quad (0, 1, 2, 3)
+    \item $q_2 = 16$ \quad ($4^2$, since $33$ is allowed)
+    \item $q_3 = 63$ \quad ($4^3 - 1$, exclude only $333$)
+\end{itemize}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.75\linewidth]{HW5problem2.png}
+    \caption{$q_n$ recursion problem layout}
+    \label{fig:placeholder}
+\end{figure}
+We can now use the recurrence to find the first 11 terms.\\
+\noindent\textbf{First 11 terms (from $n=0$ to $n=10$):}
+\begin{itemize}
+    \item $q_0 = 1$
+    \item $q_1 = 4$
+    \item $q_2 = 16$
+    \item $q_3 = 63$
+    \item $q_4 = 3(q_3 + q_2 + q_1) = 3(63 + 16 + 4) = 249$
+    \item $q_5 = 3(q_4 + q_3 + q_2) = 3(249 + 63 + 16) = 984$
+    \item $q_6 = 3(q_5 + q_4 + q_3) = 3(984 + 249 + 63) = 3888$
+    \item $q_7 = 3(q_6 + q_5 + q_4) = 3(3888 + 984 + 249) = 15363$
+    \item $q_8 = 3(q_7 + q_6 + q_5) = 3(15363 + 3888 + 984) = 60705$
+    \item $q_9 = 3(q_8 + q_7 + q_6) = 3(60705 + 15363 + 3888) = 239868$
+    \item $q_{10} = 3(q_9 + q_8 + q_7) = 3(239868 + 60705 + 15363) = 947808$
+\end{itemize}
+\textbf{Final Answer:}\\
+\[
+{
+q_n = 3q_{n-1} + 3q_{n-2} + 3q_{n-3}, \quad
+q_0 = 1,\ q_1 = 4,\ q_2 = 16,\ q_3 = 63
+}
+\]
+The first 11 terms (from $q_0$ to $q_{10}$) are:
+\[
+1,\ 4,\ 16,\ 63,\ 249,\ 984,\ 3888,\ 15363,\ 60705,\ 239868,\ 947808
+\]
+
+\end{document}

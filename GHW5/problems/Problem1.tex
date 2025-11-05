@@ -1,0 +1,66 @@
+\documentclass{article}
+\usepackage{discrete}
+\begin{document}
+\section*{Problem 1}
+\textbf{Question:}\\
+Suppose that there are animals waiting in a single-file line at a watering hole on a plain in Tanzania. Suppose the line contains baboons, zebras, and elephants. Each baboon takes up one foot; each zebra takes up two feet; and each elephant takes up three feet. Find a recurrence relation and appropriate initial conditions to determine the number of ways an unlimited supply of these animals (identical within each species) can fill an $n$ foot long line. Explain your work in detail. Please also include the first 10 terms, using computational power (such as Wolfram Alpha) if you wish.\\\\
+\textbf{Solution:}\\
+When looking at our question, we can label our three different options for animals that we will line up in a line:
+\begin{itemize}
+    \item Baboon: Takes up one foot
+    \item Zebra: Takes up two feet
+    \item Elephant: Takes up three feet
+\end{itemize}
+From this, we can define $a_n$ as the number of ways to fill an $n$-foot line using these animals.  
+At each position, we can choose to place either:
+\begin{itemize}
+    \item A baboon, which leaves $n-1$ feet to fill ($a_{n-1}$ ways),
+    \item A zebra, which leaves $n-2$ feet to fill ($a_{n-2}$ ways),
+    \item An elephant, which leaves $n-3$ feet to fill ($a_{n-3}$ ways).
+\end{itemize}
+This can be seen in the figure below:
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.75\linewidth]{HW5problem1.png}
+    \caption{$a_n$ recursion problem layout}
+    \label{fig:placeholder}
+\end{figure}\\
+Adding these together gives our recurrence relation for all $n \ge 3$:
+\[
+a_n = a_{n-1} + a_{n-2} + a_{n-3}
+\]
+Now with this we can start looking at solutions starting with some of the initial values. \\
+\textbf{Initial Conditions:}
+\begin{itemize}
+    \item $a_0 = 1$ (one way to fill a line of length 0)
+    \item $a_1 = 1$ (only a baboon)
+    \item $a_2 = 2$ (either two baboons or one zebra)
+    \item $a_3 = 4$ (combinations: BBB, BZ, ZB, E)
+\end{itemize}
+\textbf{First 11 Terms:}  
+We can now use the recurrence to find the first 11 terms.
+\begin{itemize}
+    \item $a_0 = 1$
+    \item $a_1 = 1$
+    \item $a_2 = 2$
+    \item $a_3 = 4$
+    \item $a_4 = a_3 + a_2 + a_1 = 4 + 2 + 1 = 7$
+    \item $a_5 = a_4 + a_3 + a_2 = 7 + 4 + 2 = 13$
+    \item $a_6 = a_5 + a_4 + a_3 = 13 + 7 + 4 = 24$
+    \item $a_7 = a_6 + a_5 + a_4 = 24 + 13 + 7 = 44$
+    \item $a_8 = a_7 + a_6 + a_5 = 44 + 24 + 13 = 81$
+    \item $a_9 = a_8 + a_7 + a_6 = 81 + 44 + 24 = 149$
+    \item $a_{10} = a_9 + a_8 + a_7 = 149 + 81 + 44 = 274$
+\end{itemize}
+\textbf{Final Answer:}\\
+\[
+{
+a_n = a_{n-1} + a_{n-2} + a_{n-3}, \quad
+a_0 = 1,\ a_1 = 1,\ a_2 = 2
+}
+\]
+The first 11 terms (from $a_0$ to $a_{10}$) are:
+\[
+1,\ 1,\ 2,\ 4,\ 7,\ 13,\ 24,\ 44,\ 81,\ 149,\ 274
+\]
+\end{document}
