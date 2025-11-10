@@ -16,33 +16,39 @@ Since there are 4 options for each digit in the codeword, there are \( 4^{n-1} \
 
 Therefore, when finding the total number of codewords with an even number of 0s, we have:
 \[
-q_n = 3q_{n-1} + \left(4^{n-1} - q_{n-1}\right),
+    q_n = 3q_{n-1} + \left(4^{n-1} - q_{n-1}\right),
 \]
 which simplifies to
 \[
-q_n = 2q_{n-1} + 4^{n-1}.
+    q_n = 2q_{n-1} + 4^{n-1}.
 \]
 
-It must also be noted that there is only one possible way to have a code string of length 0 that is even, so 
+It must also be noted that there is only one possible way to have a code string of length 0 that is even, so
 \[
-q_{0} = 1.
+    q_{0} = 1.
 \]
 
 Our first 10 terms are:
 
 \[
-\begin{aligned}
-n = 0: &\ 1, \\
-n = 1: &\ 3, \\
-n = 2: &\ 10, \\
-n = 3: &\ 36, \\
-n = 4: &\ 136, \\
-n = 5: &\ 528, \\
-n = 6: &\ 2080, \\
-n = 7: &\ 8256, \\
-n = 8: &\ 32896, \\
-n = 9: &\ 131328.
-\end{aligned}
+    \begin{aligned}
+        n = 0: & \ 1,      \\
+        n = 1: & \ 3,      \\
+        n = 2: & \ 10,     \\
+        n = 3: & \ 36,     \\
+        n = 4: & \ 136,    \\
+        n = 5: & \ 528,    \\
+        n = 6: & \ 2080,   \\
+        n = 7: & \ 8256,   \\
+        n = 8: & \ 32896,  \\
+        n = 9: & \ 131328.
+    \end{aligned}
 \]
+
+\begin{itemize}
+    \item \textbf{Who Contributed:} Pranav Bonthu was the main contributor, doing the formal write-up of the solution. Dhvan Shah and Michael Ku compared their solutions to Pranav's and provided feedback and edits.
+    \item \textbf{Resources}: The textbook, class notes
+    \item \textbf{Main points:} Based on group discussions, we felt that the main point of this problem was to use state counting (even/odd) to convert a global constraint into a simple recurrence
+\end{itemize}
 
 \end{document}

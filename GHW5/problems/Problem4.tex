@@ -1,0 +1,67 @@
+\documentclass[11pt]{article}
+\usepackage{../../discrete}
+
+\begin{document}
+
+\section*{Problem 4}
+
+\textbf{Question:}
+
+Prove using mathematical induction that:
+
+$$1 \cdot 2 + 2 \cdot 3 + \dots + n(n + 1) = \frac{n(n + 1)(n + 2)}{3}$$
+
+Whenever $n$ is a positive integer
+
+\textbf{Setup:}
+
+Let $P(n)$ be the proposition that $1 \cdot 2 + 2 \cdot 3 + \dots + n(n + 1) = \frac{n(n + 1)(n + 2)}{3}$. We want to show that $P(n)$ is true for all $n \geq 1$
+
+\textbf{Base Cases:}
+
+We can check that $P(1)$ is true, since it is a trivial base case:
+
+$$1(1 + 1) = 1(2) = 2$$
+$$\frac{1(1 + 1)(1 + 2)}{3} = \frac{(2)(3)}{3} = 2$$
+
+\textbf{Inductive Hypothesis:}
+
+Assume that $P(k)$ is true for some $k \geq 1$, which means that
+$$1 \cdot 2 + 2 \cdot 3 + \dots + k(k + 1) = \frac{k(k + 1)(k + 2)}{3}$$ This is a valid assumption, since we just proved it to be true for $k = 1$.
+
+\textbf{Inductive Step:}
+
+Consider $P(k + 1)$. We want to show that $P(k + 1)$ is true, which would mean that
+$$1 \cdot 2 + 2 \cdot 3 + \dots + (k + 1)((k + 1) + 1) = \frac{(k + 1)((k + 1) + 1)((k + 1) + 2)}{3}$$
+$$= 1 \cdot 2 + 2 \cdot 3 + \dots + (k + 1)(k + 2) = \frac{(k + 1)(k + 2)(k + 3)}{3}$$
+
+If we write out the second-to-last term on the left-hand side, we would get
+$$1 \cdot 2 + 2 \cdot 3 + \dots + (k)(k + 1) + (k + 1)(k + 2)$$
+
+Notice that up until that second-to-last term, the sum is the exact same as $P(k)$. This means we can rewrite the left-hand side as
+$$P(k) + (k + 1)(k + 2)$$
+
+We can substitute in the definition of $P(k)$ to get
+$$\frac{k(k + 1)(k + 2)}{3} + (k + 1)(k + 2)$$
+
+Combine these fractions
+$$\frac{k(k + 1)(k + 2) + 3(k + 1)(k + 2)}{3}$$
+
+Factor out the common $(k + 1)(k + 2)$ in the numerator
+$$\frac{(k + 1)(k + 2)(k + 3)}{3}$$
+
+$$LHS = RHS$$
+
+\textbf{Conclusion:}
+
+We have shown that $P(1)$ is true, and we have shown that IF $P(k)$ is true for some $k \geq 1$, THEN $P(k + 1)$ is true. Thus, by the principle of mathematical induction, $P(n)$ is true for all $n \geq 1$, and we can conclude that
+$$1 \cdot 2 + 2 \cdot 3 + \dots + n(n + 1) = \frac{n(n + 1)(n + 2)}{3}$$
+for all $n \geq 1$
+
+\begin{itemize}
+    \item \textbf{Who Contributed:} Dhvan Shah was the main contributor, doing the formal write-up of the solution. Pranav Bonthu and Michael Ku compared their solutions to Dhvan's and provided feedback and edits.
+    \item \textbf{Resources}: The textbook, class notes
+    \item \textbf{Main points:} Based on group discussions, we felt that the main point of this problem was to prove polynomial sum identities by induction
+\end{itemize}
+
+\end{document}

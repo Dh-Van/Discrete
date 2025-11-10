@@ -11,7 +11,7 @@ When looking at our question, we can label our three different options for anima
     \item Zebra: Takes up two feet
     \item Elephant: Takes up three feet
 \end{itemize}
-From this, we can define $a_n$ as the number of ways to fill an $n$-foot line using these animals.  
+From this, we can define $a_n$ as the number of ways to fill an $n$-foot line using these animals.
 At each position, we can choose to place either:
 \begin{itemize}
     \item A baboon, which leaves $n-1$ feet to fill ($a_{n-1}$ ways),
@@ -27,7 +27,7 @@ This can be seen in the figure below:
 \end{figure}\\
 Adding these together gives our recurrence relation for all $n \ge 3$:
 \[
-a_n = a_{n-1} + a_{n-2} + a_{n-3}
+    a_n = a_{n-1} + a_{n-2} + a_{n-3}
 \]
 Now with this we can start looking at solutions starting with some of the initial values. \\
 \textbf{Initial Conditions:}
@@ -37,7 +37,7 @@ Now with this we can start looking at solutions starting with some of the initia
     \item $a_2 = 2$ (either two baboons or one zebra)
     \item $a_3 = 4$ (combinations: BBB, BZ, ZB, E)
 \end{itemize}
-\textbf{First 11 Terms:}  
+\textbf{First 11 Terms:}
 We can now use the recurrence to find the first 11 terms.
 \begin{itemize}
     \item $a_0 = 1$
@@ -54,13 +54,20 @@ We can now use the recurrence to find the first 11 terms.
 \end{itemize}
 \textbf{Final Answer:}\\
 \[
-{
-a_n = a_{n-1} + a_{n-2} + a_{n-3}, \quad
-a_0 = 1,\ a_1 = 1,\ a_2 = 2
-}
+    {
+            a_n = a_{n-1} + a_{n-2} + a_{n-3}, \quad
+            a_0 = 1,\ a_1 = 1,\ a_2 = 2
+        }
 \]
 The first 11 terms (from $a_0$ to $a_{10}$) are:
 \[
-1,\ 1,\ 2,\ 4,\ 7,\ 13,\ 24,\ 44,\ 81,\ 149,\ 274
+    1,\ 1,\ 2,\ 4,\ 7,\ 13,\ 24,\ 44,\ 81,\ 149,\ 274
 \]
+
+\begin{itemize}
+    \item \textbf{Who Contributed:} Michael Ku was the main contributor, doing the formal write-up of the solution. Pranav Bonthu and Dhvan Shah compared their solutions to Michael's and provided feedback and edits.
+    \item \textbf{Resources}: The textbook, class notes
+    \item \textbf{Main points:} Based on group discussions, we felt that the main point of this problem was to understand how counting with fixed-size tiles/blocks reduces to adding counts for smaller lengths
+\end{itemize}
+
 \end{document}

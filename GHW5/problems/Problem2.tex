@@ -30,7 +30,7 @@ And that is it. We cannot have a third 3 in a row, as that is a clear rule break
 
 \noindent\textbf{Final Equation:}
 \[
-q_n \;=\; 3q_{n-1} \;+\; 3q_{n-2} \;+\; 3q_{n-3} \qquad (n \ge 3).
+    q_n \;=\; 3q_{n-1} \;+\; 3q_{n-2} \;+\; 3q_{n-3} \qquad (n \ge 3).
 \]
 From here, we solve for our initial conditions, which will be used to calculate the rest of the terms in the recurrence. \\
 
@@ -64,14 +64,20 @@ We can now use the recurrence to find the first 11 terms.\\
 \end{itemize}
 \textbf{Final Answer:}\\
 \[
-{
-q_n = 3q_{n-1} + 3q_{n-2} + 3q_{n-3}, \quad
-q_0 = 1,\ q_1 = 4,\ q_2 = 16,\ q_3 = 63
-}
+    {
+            q_n = 3q_{n-1} + 3q_{n-2} + 3q_{n-3}, \quad
+            q_0 = 1,\ q_1 = 4,\ q_2 = 16,\ q_3 = 63
+        }
 \]
 The first 11 terms (from $q_0$ to $q_{10}$) are:
 \[
-1,\ 4,\ 16,\ 63,\ 249,\ 984,\ 3888,\ 15363,\ 60705,\ 239868,\ 947808
+    1,\ 4,\ 16,\ 63,\ 249,\ 984,\ 3888,\ 15363,\ 60705,\ 239868,\ 947808
 \]
+
+\begin{itemize}
+    \item \textbf{Who Contributed:} Michael Ku was the main contributor, doing the formal write-up of the solution. Pranav Bonthu and Dhvan Shah compared their solutions to Michael's and provided feedback and edits.
+    \item \textbf{Resources}: The textbook, class notes
+    \item \textbf{Main points:} Based on group discussions, we felt that the main point of this problem was to understand how to build forbidden pattern avoidance recurrences by short prefix cases
+\end{itemize}
 
 \end{document}
