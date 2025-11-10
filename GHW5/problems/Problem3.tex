@@ -1,0 +1,48 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\begin{document}
+
+\section{Problem 3}
+
+In order to solve this problem, we need to consider what each symbol (0, 1, 2, 3) represents. When a zero is appended to our codeword, the number of 0s switches from even to odd or from odd to even. In this problem, we are only counting codewords that contain an even number of 0s. When a 1, 2, or 3 is appended to the codeword, the state of being even or odd does not change.
+
+When we append a nonzero number to a codeword that is even and has a length of \( n - 1 \), it will remain even. Since there are three possible options for nonzero numbers, it can be said that there are \( 3q_{n-1} \) codewords that can be formed from a codeword of length \( n \) in this way.
+
+As we know, if instead of adding 1, 2, or 3 we append a zero, the codeword changes from odd to even or from even to odd. When a codeword becomes odd, we do not include it in our total. When it becomes even, we can look at a string that is odd and has a length of \( n - 1 \). To find the total number of odd strings of length \( n - 1 \), we note that since the even ones are represented by \( q_{n-1} \), we can subtract the number of even strings from the total possible codewords.
+
+Since there are 4 options for each digit in the codeword, there are \( 4^{n-1} \) total arrangements. This means that there are \( 4^{n-1} - q_{n-1} \) odd codewords, which become even after appending a 0.
+
+Therefore, when finding the total number of codewords with an even number of 0s, we have:
+\[
+q_n = 3q_{n-1} + \left(4^{n-1} - q_{n-1}\right),
+\]
+which simplifies to
+\[
+q_n = 2q_{n-1} + 4^{n-1}.
+\]
+
+It must also be noted that there is only one possible way to have a code string of length 0 that is even, so 
+\[
+q_{0} = 1.
+\]
+
+Our first 10 terms are:
+
+\[
+\begin{aligned}
+n = 0: &\ 1, \\
+n = 1: &\ 3, \\
+n = 2: &\ 10, \\
+n = 3: &\ 36, \\
+n = 4: &\ 136, \\
+n = 5: &\ 528, \\
+n = 6: &\ 2080, \\
+n = 7: &\ 8256, \\
+n = 8: &\ 32896, \\
+n = 9: &\ 131328.
+\end{aligned}
+\]
+
+\end{document}
