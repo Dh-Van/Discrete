@@ -1,7 +1,7 @@
 import os
 
-GHW = 4
-PROBLEMS = 2
+GHW = 6
+PROBLEMS = 4
 
 os.makedirs(f'GHW{GHW}/problems')
 

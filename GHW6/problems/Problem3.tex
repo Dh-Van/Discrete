@@ -6,57 +6,57 @@
 \textbf{Part (a):}\\
 Recall your inclusion/exclusion knowledge to find an expression for the number of onto functions from S (s elements) to a set T (with some t elements). To get full credit, you cannot simply use the formula from the book. You must set up a big set A that contains all functions from S to T, and then carefully define subsets $A_i$ that contain "bad" (not onto) functions, and then explain how you are applying inclusion/exclusion to those subsets. Put your final answer in the form $"t^s - .....".$\\\\
 \textbf{Solution:}\\\\
-To solve this question, we will use the principle of inclusion-exclusion to take the set of all functions from $S$ to $T$ and then remove the ones that are not onto. We start by defining our big set $A$ as the set of all functions from $S$ to $T$. Each element in $S$ has $t$ possible choices in $T$, so there are $t^s$ total functions in $A$. 
+To solve this question, we will use the principle of inclusion-exclusion to take the set of all functions from $S$ to $T$ and then remove the ones that are not onto. We start by defining our big set $A$ as the set of all functions from $S$ to $T$. Each element in $S$ has $t$ possible choices in $T$, so there are $t^s$ total functions in $A$.
 Now, we define subsets $A_i$ for each element $i$ in $T$, where each $A_i$ represents the set of “bad” functions that do not map any element of $S$ to $i$. These functions are not onto because they completely miss the element $i$ in $T$. What we want, then, is to count all the functions that are not in the union of these bad sets, or $|A| - |\bigcup_i A_i|$. This is where inclusion-exclusion comes in.
-\\ We can start by considering what happens when we prevent one value of $T$ from being used. If we block out one element of $T$, then each of the $s$ elements in $S$ only has $(t-1)$ choices. That means there are $(t-1)^s$ such functions, and since there are $\binom{t}{1}$ ways to choose which element of $T$ to block, we get $\binom{t}{1}(t-1)^s$ total functions that miss exactly one element. 
-\\Next, we continue this process by increasing the number of elements that we prevent from being mapped to. If we block two elements of $T$, there are $(t-2)^s$ functions that map $S$ into the remaining $t-2$ elements, and there are $\binom{t}{2}$ ways to choose which two to exclude. The same logic applies for blocking three, four, or more elements. 
+\\ We can start by considering what happens when we prevent one value of $T$ from being used. If we block out one element of $T$, then each of the $s$ elements in $S$ only has $(t-1)$ choices. That means there are $(t-1)^s$ such functions, and since there are $\binom{t}{1}$ ways to choose which element of $T$ to block, we get $\binom{t}{1}(t-1)^s$ total functions that miss exactly one element.
+\\Next, we continue this process by increasing the number of elements that we prevent from being mapped to. If we block two elements of $T$, there are $(t-2)^s$ functions that map $S$ into the remaining $t-2$ elements, and there are $\binom{t}{2}$ ways to choose which two to exclude. The same logic applies for blocking three, four, or more elements.
 \\Using inclusion-exclusion, we alternate the signs each time to make sure we are not double-counting or double-removing overlapping cases. Putting this all together, the number of onto functions from $S$ to $T$ is:
 \[
-t^s - \binom{t}{1}(t-1)^s + \binom{t}{2}(t-2)^s - \binom{t}{3}(t-3)^s + \cdots + (-1)^t \binom{t}{t}(t-t)^s.
+    t^s - \binom{t}{1}(t-1)^s + \binom{t}{2}(t-2)^s - \binom{t}{3}(t-3)^s + \cdots + (-1)^t \binom{t}{t}(t-t)^s.
 \]
 This expression starts with all possible functions $t^s$, subtracts those that miss at least one element of $T$, adds back those that miss at least two, and continues this alternating pattern to correctly count all onto functions from $S$ to $T$. This can also be written as:
 \[
-f_t = \sum_{i=0}^{t} (-1)^i \binom{t}{i} (t - i)^s.
+    f_t = \sum_{i=0}^{t} (-1)^i \binom{t}{i} (t - i)^s.
 \]
 \textbf{Part (b):}\\
- Find a recurrence relation to count $f_t$ = the number of onto functions from S  with s elements to a set T with t elements. Although philosophically you could recur on either or both s and t, I want you to find a recurrence relation that assumes that s is fixed and t is the variable that can vary.  This means that you can recur on t but not on s.  There are multiple correct RRs, but please keep working on options until you find a RR that starts with $"t^s - .....".$\\\\
+Find a recurrence relation to count $f_t$ = the number of onto functions from S  with s elements to a set T with t elements. Although philosophically you could recur on either or both s and t, I want you to find a recurrence relation that assumes that s is fixed and t is the variable that can vary.  This means that you can recur on t but not on s.  There are multiple correct RRs, but please keep working on options until you find a RR that starts with $"t^s - .....".$\\\\
 \textbf{Solution:}\\
 Based on the previous part, we can say that the number of onto functions from $S$ to $T$ is given by the inclusion–exclusion formula:
 \[
-f_t = \sum_{i=0}^{t} (-1)^i \binom{t}{i} (t-i)^s.
+    f_t = \sum_{i=0}^{t} (-1)^i \binom{t}{i} (t-i)^s.
 \]
 To better understand how this behaves and to look for a recurrence pattern, let’s compute the first few values of $f$ by changing the value of $t$ and holding $s$ constant.
 \begin{itemize}
-    \item If $t = 1$: 
-    \[
-    f_1 = 1^s = 1.
-    \]
-    \item If $t = 2$: 
-    \[
-    f_2 = 2^s - \binom{2}{1}(1^s) = 2^s - 2.
-    \]
-    \item If $t = 3$: 
-    \[
-    f_3 = 3^s - \binom{3}{1}(2^s) + \binom{3}{2}(1^s) = 3^s - 3(2^s) + 3.
-    \]
-    \item If $t = 4$: 
-    \[
-    f_4 = 4^s - 4(3^s) + 6(2^s) - 4.
-    \]
-    \item If $t = 5$: 
-    \[
-    f_5 = 5^s - 5(4^s) + 10(3^s) - 10(2^s) + 5.
-    \]
+    \item If $t = 1$:
+          \[
+              f_1 = 1^s = 1.
+          \]
+    \item If $t = 2$:
+          \[
+              f_2 = 2^s - \binom{2}{1}(1^s) = 2^s - 2.
+          \]
+    \item If $t = 3$:
+          \[
+              f_3 = 3^s - \binom{3}{1}(2^s) + \binom{3}{2}(1^s) = 3^s - 3(2^s) + 3.
+          \]
+    \item If $t = 4$:
+          \[
+              f_4 = 4^s - 4(3^s) + 6(2^s) - 4.
+          \]
+    \item If $t = 5$:
+          \[
+              f_5 = 5^s - 5(4^s) + 10(3^s) - 10(2^s) + 5.
+          \]
 \end{itemize}
 Now let’s analyze the pattern among these results. Between $t=1$ and $t=2$, we see that the expression starts with $t^s$ and then subtracts a term involving $\binom{t}{1}$ multiplied by a previous power. When we move to $t=3$, we notice that $2^s$ reappears with a coefficient based on $\binom{3}{1}$, and the constant term $3$ relates to $\binom{3}{2}$ and $f_1$. Similarly, for $t=4$ and $t=5$, each new expression brings back powers that appeared in earlier $f_i$ terms, each multiplied by the corresponding binomial coefficient. \\
 This observation suggests that each $f_t$ depends on the previous values $f_{t-1}, f_{t-2}, \ldots$ through descending binomial coefficients. Conceptually, every function from $S$ to $T$ either uses all $t$ elements (and is onto) or misses at least one of them. If a function misses exactly $i$ elements, there are $\binom{t}{i}$ ways to choose which are missed, and the remaining functions correspond to $f_{t-i}$. \\
-Putting this reasoning together, we arrive at the following recurrence relation that looks something like this: 
+Putting this reasoning together, we arrive at the following recurrence relation that looks something like this:
 \[
-f_t = t^s - \binom{t}{1}f_{t-1} - \binom{t}{2}f_{t-2} - \binom{t}{3}f_{t-3} - \cdots - \binom{t}{t-1}f_1.
+    f_t = t^s - \binom{t}{1}f_{t-1} - \binom{t}{2}f_{t-2} - \binom{t}{3}f_{t-3} - \cdots - \binom{t}{t-1}f_1.
 \]
 Turning this into more formal summation, we get a final answer that looks like this:
 \[
-f_t = t^s - \sum_{i=1}^{t-1} \binom{t}{i} f_{t-i}, \quad \text{with } f_1 = 1  \text{ , } s \ge 1 \text{ and }t \ge1
+    f_t = t^s - \sum_{i=1}^{t-1} \binom{t}{i} f_{t-i}, \quad \text{with } f_1 = 1  \text{ , } s \ge 1 \text{ and }t \ge1
 \]
 This recurrence starts with $t^s$ and subtracts the over counted cases where one or more of the $t$ elements are not used, matching the pattern we observed from the earlier examples.\\\\
 \textbf{Part (c):}\\
