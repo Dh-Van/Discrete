@@ -1,8 +1,98 @@
 \documentclass[11pt]{article}
-\usepackage{../../discrete}
+\usepackage{../../discrete} % Assuming you have this package in this location
 
 \begin{document}
 
 \section*{Problem 4}
+
+\textbf{Setup}: In the Tower of Hanoi puzzle, suppose our goal is to transfer all $n$ disks from Peg 1 to Peg 3, but we cannot move a disk directly between Pegs 1 and 3. Each move of a disk must be a move involving Peg 2. As usual, we cannot place a disk on top of a smaller disk.
+
+\textbf{Part A:} Find a recurrence relation for the number of moves required to solve the puzzle for $n$ disks with this added restriction.
+
+Let $a_n$ be the minimum number of moves to solve the puzzle for $n$ disks.
+
+We can start by finding some base cases. To solve the puzzle for $n = 1$ disk, we move the disk from Peg 1 to Peg 2, and then from Peg 2 to Peg 3. This means $a_1 = 2$.
+
+We can do the same for $n = 2$ disks.
+\begin{enumerate}
+    \item First, we need to move Disk 1 from Peg 1 to Peg 3. This is just an $n=1$ problem, which we know takes $a_1$ moves.
+    \item Now, move Disk 2 from Peg 1 to Peg 2 (1 move).
+    \item Next, we must move Disk 1 from Peg 3 to Peg 1 so we can move Disk 2. This is just an $n=1$ problem in reverse, which also takes $a_1$ moves.
+    \item Then, move Disk 2 from Peg 2 to Peg 3 (1 move).
+    \item Finally, move Disk 1 from Peg 1 to Peg 3, which again takes $a_1$ moves.
+\end{enumerate}
+
+Adding this all up:
+
+$$a_2 = a_1 + 1 + a_1 + 1 + a_1 = 3a_1 + 2$$
+
+We can generalize this process for $n$ disks. To move $n$ disks from Peg 1 to Peg 3:
+\begin{enumerate}
+    \item Move the top $n-1$ disks from Peg 1 to Peg 3. This takes $a_{n-1}$ moves.
+    \item Move the $n$th disk from Peg 1 to Peg 2. This takes 1 move.
+    \item Move the top $n-1$ disks from Peg 3 to Peg 1. This takes $a_{n-1}$ moves.
+    \item Move the $n$th disk from Peg 2 to Peg 3. This takes 1 move.
+    \item Move the top $n-1$ disks from Peg 1 to Peg 3. This takes $a_{n-1}$ moves.
+\end{enumerate}
+
+This process is valid because the $n$th disk is the largest, so it only moves to an empty peg, and the moves of the $n-1$ stack are valid by our recursive definition.
+
+Writing the above sequence as a recurrence relation:
+$$a_n = a_{n - 1} + 1 + a_{n - 1} + 1 + a_{n - 1} = 3a_{n - 1} + 2$$
+$$\text{Where } a_1 = 2$$
+
+\textbf{Part B:} Prove the closed form solution of the recurrence relation using induction
+
+Let $P(n)$ be the proposition that $a_n = 3^n - 1$ for the recurrence $a_n = 3a_{n-1} + 2$ and $a_1 = 2$.
+
+\textbf{Base Case:} We can show that $P(1)$ holds true:
+$$a_1 = 2$$
+$$3^1 - 1 = 2$$
+The proposition holds for $n=1$.
+
+We can also check if $P(2)$ holds true:
+$$a_2 = 3a_{1} + 2 = 3(2) + 2 = 8$$
+$$3^2 - 1 = 9 - 1 = 8$$
+The proposition also holds for $n=2$.
+
+\textbf{Inductive Hypothesis:} Assume $P(k)$ holds true for some $k \geq 1$. That is, assume $a_k = 3^k - 1$.
+
+\textbf{Inductive Step:} We want to show that $P(k+1)$ holds true, meaning we want to show that $a_{k+1} = 3^{k+1} - 1$.
+
+We start with the recurrence relation for $a_{k+1}$:
+$$a_{k+1} = 3a_k + 2$$
+
+Now, we use our inductive hypothesis to substitute the formula for $a_k$:
+$$a_{k+1} = 3(3^k - 1) + 2$$
+$$= 3 \cdot 3^k - 3 + 2$$
+$$= 3^{k+1} - 1$$
+
+This result, $a_{k+1} = 3^{k+1} - 1$, is exactly what we wanted to show.
+
+Since $P(1)$ is true and we have shown that $P(k)$ implies $P(k+1)$, by the Principle of Mathematical Induction, $P(n)$ is true for all $n \geq 1$.
+
+\textbf{Part C:} How many different arrangements are there of the $n$ disks on three pegs so that no disk is on top of a smaller disk?
+
+We can solve this by considering each disk independently. Each of the $n$ disks can be placed on any of the 3 pegs, which means each disk has 3 choices.
+
+Since the peg choice for each disk is independent, we can use the product rule to find the total number of arrangements: $3 \cdot 3 \cdot \dots \cdot 3$ ($n$ times) $= 3^n$.
+
+We don't have to worry about the stacking order on a single peg, because the rules of the puzzle state that the disks must be ordered from largest on the bottom to smallest on the top. Once we have assigned a set of disks to a peg, there is only one valid way to stack them.
+
+\textbf{Part D:} Show that every allowable arrangement of the $n$ disks occurs in the solution of this variation of the puzzle.
+
+In Part C, we showed that there are $3^n$ total valid arrangements for the $n$ disks.
+
+In Part B, we proved that the algorithm described in Part A requires $a_n = 3^n - 1$ moves to get from the starting configuration to the final configuration
+
+A sequence of $3^n - 1$ moves, starting from the starting configuration, will pass through a total of $(3^n - 1) + 1 = 3^n$ states.
+
+Since our solution path visits $3^n$ unique states, and there are only $3^n$ possible valid states in total, our solution must visit every possible allowable arrangement exactly once.
+
+\begin{itemize}
+    \item \textbf{Who Contributed:} Dhvan Shah was the main contributor, doing the formal write-up of the solution. Pranav Bonthu and Michael Ku compared their solutions to Dhvan's and provided feedback and edits.
+    \item \textbf{Resources}: The textbook, class notes
+    \item \textbf{Main points:} Based on group discussions, we felt that the main point of this problem was to understand how to use induction to prove the closed form solution of a recurrence relation
+\end{itemize}
 
 \end{document}
