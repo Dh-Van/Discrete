@@ -1,0 +1,62 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\begin{document}
+
+\section{Problem 1}
+
+Let $P(n)$ be the proposed statement that $2^{(n-1)} + 2 \cdot 4^{(n-1)}$ is a closed form solution for the recurrence relation for the number of length $n$ codewords you can make if you must have an even number of $0$s. We want to prove that P(n) is true for integers $n \ge 1$. The recurrence relation is defined as 
+\[
+q_n = 2(q_{n-1}) + 4^{\,n-1}.
+\]
+
+Lets look at the proposed statement of $P(1)$:
+
+\[
+P(1) = 2^{(1-1)} + 2 \cdot 4^{(1-1)} = 2^0 + 2 \cdot 4^0 = 3.
+\]
+
+When looking at the recurrence relation, $q_1$ is equal to $3$. This means that when $n = 1$, the recurrence relation and the proposed closed-form solution are equal.
+
+As our inductive hypothesis, assume that $P(n)$ holds for SOME $k \ge 1$. We will look at the case of $P(k+1)$ and $q_{k+1}$.
+
+\[
+q_{k+1} = 2(q_k) + 4^{(k+1)-1}.
+\]
+
+Through induction, we say $q_k = P_k$. So:
+
+\[
+q_{k+1} = 2(2^{k-1}) + 2(4^{k-1}) + 4^{(k+1)-1}.
+\]
+
+With algebra, we can simplify to:
+
+\[
+q_{k+1} = 2(2^{k-1}) + 2(4^{k-1}) + 4^k,
+\]
+
+\[
+q_{k+1} = 2 \cdot 2^{k-1} + 2 \cdot 2(4^{k-1}) + 4^k,
+\]
+
+\[
+q_{k+1} = 2 \cdot 2^{k-1} + 4(4^{k-1}) + 4^k,
+\]
+
+\[
+q_{k+1} = 2 \cdot 2^{k-1} + 4^k + 4^k,
+\]
+
+\[
+q_{k+1} = 2^k + 2 \cdot 4^k,
+\]
+
+\[
+q_{k+1} = 2^{(k+1)-1} + 2 \cdot 4^{(k+1)-1} = P(k+1).
+\]
+
+Since the base case of $P(1)$ holds and since the $(k+1)$st case holds true, $P(n)$ must be true for all positive integers where $n \ge 1$.
+
+\end{document}
