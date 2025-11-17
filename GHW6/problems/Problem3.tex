@@ -54,13 +54,22 @@ Putting this reasoning together, we arrive at the following recurrence relation 
 \[
     f_t = t^s - \binom{t}{1}f_{t-1} - \binom{t}{2}f_{t-2} - \binom{t}{3}f_{t-3} - \cdots - \binom{t}{t-1}f_1.
 \]
-Turning this into more formal summation, we get a final answer that looks like this:
+Turning this into a more formal summation, we get a final answer that looks like this:
 \[
     f_t = t^s - \sum_{i=1}^{t-1} \binom{t}{i} f_{t-i}, \quad \text{with } f_1 = 1  \text{ , } s \ge 1 \text{ and }t \ge1
 \]
-This recurrence starts with $t^s$ and subtracts the over counted cases where one or more of the $t$ elements are not used, matching the pattern we observed from the earlier examples.\\\\
+This recurrence starts with $t^s$ and subtracts the overcounted cases where one or more of the $t$ elements are not used, matching the pattern we observed from the earlier examples.\\\\
 \textbf{Part (c):}\\
 Write a sentence or two that compares and contrasts the closed-form solution that you got via inc/exc and the RR that you got that counts the same thing.  What is the major difference in how these two solutions count onto functions? \\\\
 \textbf{Solution:}\\
 Both the closed-form solution from inclusion–exclusion and the recurrence relation begin by considering all possible functions from $S$ to $T$ (i.e., $t^s$ total) and then subtracting the cases that are not onto. The key difference lies in how they handle overcounting. In the closed-form expression, inclusion–exclusion explicitly corrects for overlaps by alternately adding and subtracting terms to account for functions missing one or more elements of $T$. In contrast, the recurrence relation inherently incorporates this correction through previous computed values $f_i$, each of which already accounts for overlaps in smaller cases. As a result, the recurrence builds onto functions incrementally, while the closed form resolves all cases simultaneously.
+
+
+\begin{itemize}
+    \item \textbf{Who Contributed:} Mikey Ku was the main contributor, doing the formal write-up of the solution. Pranav Bonthu and Dhvan Shah compared their solutions to Mikey's and provided feedback and edits.
+    \item \textbf{Resources}: The textbook, class notes
+    \item \textbf{Main points:} Based on group discussions, we felt that the main point of this problem is to practice using inclusion-exclusion on a closed form and RR, to undertstand their similarities and differences.
+\end{itemize}
+
+
 \end{document}
