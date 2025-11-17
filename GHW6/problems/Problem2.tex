@@ -4,39 +4,39 @@
 
 \begin{document}
 
-\section{Problem 2}
+\section*{Problem 2}
 
 Let $P(n)$ be the proposed statement that $n!$ represents the product of all ``choose'' states when a pile of $n$ candies is split into two smaller piles $(r \text{ and } s)$ and $\binom{r+s}{s}$ is taken. The piles keep splitting until there are $n$ piles of $1$ candy, where at each split a choose statement is formed (the total sum of candy from the two piles choose the amount of candy in one of the piles).
 
 Below are the initial conditions for the problem:
 \[
-n = 1 : 1,\qquad
-n = 2 : 2,\qquad
-n = 3 : 6,\qquad
-n = 4 : 24
+    n = 1 : 1,\qquad
+    n = 2 : 2,\qquad
+    n = 3 : 6,\qquad
+    n = 4 : 24
 \]
 
 Consider $P(1)$:
 \[
-P(1) = 1! = 1.
+    P(1) = 1! = 1.
 \]
 
 This shows that when $n = 1$, $P(1)$ holds. As our inductive hypothesis, assume that $P(k)$ holds for some $k \ge 1$. We now consider $P(k+1)$. Since $k+1$ can be split into $r$ and $s$ (both less than $k+1$ and satisfying $r+s = k+1$), we obtain the choose term
 \[
-\binom{r+s}{s} = \binom{k+1}{s}.
+    \binom{r+s}{s} = \binom{k+1}{s}.
 \]
 Because $r$ and $s$ are both less than $k+1$, the inductive hypothesis gives that the product of choose statements for the pile of size $r$ is $r!$ and similarly the product for size $s$ is $s!$.
 
 Therefore, the total product of choose statements for splitting $k+1$ candies is:
 \[
-\binom{r+s}{s} \cdot r! \cdot s!.
+    \binom{r+s}{s} \cdot r! \cdot s!.
 \]
 
 Using algebra:
 \[
-\binom{k+1}{s} \cdot r! \cdot s!
-= \frac{(k+1)!}{r!\,s!} \cdot r! \cdot s!
-= (k+1)!.
+    \binom{k+1}{s} \cdot r! \cdot s!
+    = \frac{(k+1)!}{r!\,s!} \cdot r! \cdot s!
+    = (k+1)!.
 \]
 
 Thus, $P(k+1)$ holds. Since the base case $P(1)$ holds and the inductive step is valid, $P(n)$ is true for all integers $n \ge 1$.
@@ -45,7 +45,7 @@ Thus, $P(k+1)$ holds. Since the base case $P(1)$ holds and the inductive step is
     \item \textbf{Who Contributed:} Pranav Bonthu was the main contributor, doing the formal write-up of the solution. Mikey Ku and Dhvan Shah compared their solutions to Pranav's and provided feedback and edits.
     \item \textbf{Resources}: The textbook, class notes
     \item \textbf{Main points:} Based on group discussions, we felt that the main point of this problem was to understand how induction can be used to prove iterative problems.
-    
+          
 \end{itemize}
 
 \end{document}
